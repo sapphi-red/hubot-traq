@@ -1,4 +1,4 @@
-const { Adapter } = require("hubot");
+const { Adapter } = require("hubot/es2015");
 const Request = require("./request");
 const Handler = require("./handler");
 
