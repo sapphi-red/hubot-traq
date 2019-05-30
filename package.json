@@ -2,7 +2,7 @@
   "name": "hubot-traq",
   "version": "1.0.0",
   "description": "Hubot adapter for traQ.",
-  "main": "src/traq.coffee",
+  "main": "./traq",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,10 +10,7 @@
     "parent-require": "^1.0.0"
   },
   "peerDependencies": {
-    "hubot": ">=2.0"
-  },
-  "devDependencies": {
-    "coffee-script": ">=1.2.0"
+    "hubot": ">=3.0"
   },
   "repository": {
     "type": "git",
