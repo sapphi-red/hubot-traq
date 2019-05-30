@@ -1,16 +1,17 @@
 const { Adapter } = require("hubot");
+const Request = require("./request");
 const Handler = require("./handler");
 
 class TraQAdaper extends Adapter {
-  constructor(robot, { id, token, path }) {
+  constructor(robot, { id, verifyToken, accessToken, path }) {
     super(robot);
     this.robot = robot;
 
     this.id = id;
-    this.token = token;
     this.path = path;
 
-    this.handler = new Handler(token);
+    this.request = new Request(accessToken, robot);
+    this.handler = new Handler(verifyToken);
 
     this.robot.logger.info("Constructor");
   }
@@ -37,6 +38,19 @@ class TraQAdaper extends Adapter {
   // ここから送信
   send(envelope, ...strings) {
     this.robot.logger.info("Send");
+
+    if (envelope.channelID) {
+      await this.request.post(`/channels/${envelope.channelID}/messages`, {
+        text: strings.join("\n")
+      });
+    } else if (envelope.userID) {
+      await this.request.post(`/users/${envelope.userID}/messages`, {
+        text: strings.join("\n")
+      });
+    } else {
+      throw new Error("不明なsend()です")
+    }
+    this.robot.logger.debug("Sent");
   }
 
   reply(envelope, ...strings) {
