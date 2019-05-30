@@ -7,7 +7,7 @@ const {
   ChannelCreated,
   ChannelTopicChanged,
   UserCreated
-} = require("./events");
+} = require("./events/events");
 
 const TOKEN_HEADER = "X-TRAQ-BOT-TOKEN";
 const EVENT_HEADER = "X-TRAQ-BOT-EVENT";
