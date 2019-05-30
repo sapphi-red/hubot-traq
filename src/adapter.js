@@ -2,7 +2,7 @@ const { Adapter } = require("hubot");
 const Request = require("./request");
 const Handler = require("./handler");
 
-class TraQAdaper extends Adapter {
+class TraQAdapter extends Adapter {
   constructor(robot, { id, verifyToken, accessToken, path }) {
     super(robot);
     this.robot = robot;
