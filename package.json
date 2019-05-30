@@ -1,0 +1,32 @@
+{
+  "name": "hubot-traq",
+  "version": "1.0.0",
+  "description": "Hubot adapter for traQ.",
+  "main": "src/traq.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "parent-require": "^1.0.0"
+  },
+  "peerDependencies": {
+    "hubot": ">=2.0"
+  },
+  "devDependencies": {
+    "coffee-script": ">=1.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sapphi-red/hubot-traq.git"
+  },
+  "keywords": [
+    "traq",
+    "hubot"
+  ],
+  "author": "green (翠)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sapphi-red/hubot-traq/issues"
+  },
+  "homepage": "https://github.com/sapphi-red/hubot-traq#readme"
+}
