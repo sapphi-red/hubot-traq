@@ -30,5 +30,9 @@ const getEnvs = () => {
 };
 
 exports.use = robot => {
-  return new TraQAdapter(robot, getEnvs());
+  try {
+    return new TraQAdapter(robot, getEnvs());
+  } catch (e) {
+    console.error(e);
+  }
 };
