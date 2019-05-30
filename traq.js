@@ -21,7 +21,7 @@ const getEnvs = () => {
     throw new Error("HUBOT_TRAQ_ACCESS_TOKENが存在しません");
   }
 
-  const path = process.env[TOKEN_ENV_PATH];
+  const path = process.env[PATH_ENV_NAME];
   if (!path) {
     throw new Error("HUBOT_TRAQ_PATHが存在しません");
   }

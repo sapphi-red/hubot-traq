@@ -19,7 +19,7 @@
 ## 設定
 このアダプターは以下の環境変数を利用します
 
-- `HUBOT_TRAQ_ID` - traQで動かすHubotのBOT ID
+- `HUBOT_TRAQ_ID` - traQで動かすHubotのUSER ID
 - `HUBOT_TRAQ_VERIFY_TOKEN` - traQで動かすHubotのverify token
 - `HUBOT_TRAQ_ACCESS_TOKEN` - traQで動かすHubotのaccess token
 
