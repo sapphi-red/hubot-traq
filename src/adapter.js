@@ -36,7 +36,7 @@ class TraQAdaper extends Adapter {
   }
 
   // ここから送信
-  send(envelope, ...strings) {
+  async send(envelope, ...strings) {
     this.robot.logger.info("Send");
 
     if (envelope.channelID) {
@@ -48,7 +48,7 @@ class TraQAdaper extends Adapter {
         text: strings.join("\n")
       });
     } else {
-      throw new Error("不明なsend()です")
+      throw new Error("不明なsend()です");
     }
     this.robot.logger.debug("Sent");
   }
