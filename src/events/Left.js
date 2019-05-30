@@ -8,4 +8,4 @@ class Left extends Base {
   }
 }
 
-module.exports = left;
+module.exports = Left;
