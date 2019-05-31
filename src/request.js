@@ -36,17 +36,17 @@ class Request {
     if (room) {
       switch (room.type) {
         case "channel":
-          sendMessageToChannel(room.id, ...strings);
+          this.sendMessageToChannel(room.id, ...strings);
           break;
         case "dm":
-          sendMessageToUser(room.id, ...strings);
+          this.sendMessageToUser(room.id, ...strings);
           break;
         case "none":
           throw new Error("envelopeにroom.typeが存在しません");
       }
     }
-    if (channelID) return sendMessageToChannel(channelID, ...strings);
-    if (userID) return sendMessageToUser(userID, ...strings);
+    if (channelID) return this.sendMessageToChannel(channelID, ...strings);
+    if (userID) return this.sendMessageToUser(userID, ...strings);
     throw new Error(
       "無効な引数が渡されました: hubot-traq/request/sendMessage()"
     );
