@@ -97,7 +97,7 @@ class Request {
     });
   }
   sendStamp(envelope, ...stamps) {
-    const { message } = envelope;
+    const { message, messageID } = envelope;
     if ((!message || !message.id) && messageID) {
       throw new Error(
         `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
