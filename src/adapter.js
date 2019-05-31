@@ -21,14 +21,15 @@ class TraQAdapter extends Adapter {
 
     // イベント受信
     this.robot.router.post(this.path, (req, res) => {
-      res.status(204).end();
       this.robot.logger.debug("Recieved Request");
 
       try {
         const { data } = this.handler.parse(req);
         this.robot.receive(data);
+        res.status(204).end();
       } catch (e) {
         this.robot.logger.debug(`Error with request data: ${e}`);
+        res.status(403).end();
       }
     });
 
