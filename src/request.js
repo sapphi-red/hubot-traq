@@ -15,9 +15,8 @@ class Request {
       url,
       baseUrl: BASE_URL,
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${this.token}`
+      auth: {
+        bearer: this.token
       },
       json: true
     });
@@ -27,9 +26,8 @@ class Request {
       url,
       baseUrl: BASE_URL,
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${this.token}`
+      auth: {
+        bearer: this.token
       },
       body: data,
       json: true
@@ -40,9 +38,8 @@ class Request {
       url,
       baseUrl: BASE_URL,
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${this.token}`
+      auth: {
+        bearer: this.token
       },
       body: data,
       json: true
