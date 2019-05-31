@@ -47,7 +47,9 @@ class TraQAdapter extends Adapter {
   }
 
   reply(envelope, ...strings) {
-    this.robot.logger.info("Send");
+    this.robot.logger.info("Reply");
+    await this.request.replyMessage(envelope, ...strings);
+    this.robot.logger.debug("Reply");
   }
 }
 

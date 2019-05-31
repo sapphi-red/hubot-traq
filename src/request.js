@@ -62,6 +62,27 @@ class Request {
       text: strings.join("\n")
     });
   }
+
+  replyMessage(envelope, ...strings) {
+    const { user } = envelope;
+    if (!user) {
+      throw new Error(
+        `無効な引数が渡されました: hubot-traq/request/replyMessage(): ${JSON.stringify(
+          envelope
+        )}`
+      );
+    }
+    const userMention = this.createUserString(user);
+    strings[0] = userMention + strings[0];
+    return this.sendMessage(envelope, ...strings);
+  }
+  createUserString(user) {
+    return `!${JSON.stringify({
+      type: "user",
+      raw: `${user.name}`,
+      id: user.id
+    })}`;
+  }
 }
 
 module.exports = Request;
