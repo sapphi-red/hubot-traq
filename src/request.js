@@ -6,6 +6,8 @@ class Request {
   constructor(token, robot) {
     this.token = token;
     this.robot = robot;
+
+    this.stampIDTablePromise = this.get("/stamps");
   }
 
   get(url) {
@@ -106,8 +108,16 @@ class Request {
       );
     }
     return Promise.all(
-      stamps.map(stamp => {
-        if (!stamp.id) {
+      stamps.map(async stamp => {
+        if (!stamp.name) {
+          throw new Error(
+            `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
+              stamps
+            )}`
+          );
+        }
+        const stampID = await stampNameToID(stamp.name);
+        if (!stampID) {
           throw new Error(
             `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
               stamps
@@ -115,11 +125,19 @@ class Request {
           );
         }
         return this.post(
-          `/messages/${messageID || message.id}/stamps/${stamp.id}`,
+          `/messages/${messageID || message.id}/stamps/${stampID}`,
           {}
         );
       })
     );
+  }
+  async stampNameToID(name) {
+    const table = await this.stampIDTablePromise;
+    const stamps = table.filter(v => v.name === name);
+    if (stamps.length > 0) {
+      return stamps[0].id;
+    }
+    return null;
   }
 
   replyMessage(envelope, ...strings) {
