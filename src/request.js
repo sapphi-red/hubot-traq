@@ -18,7 +18,8 @@ class Request {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${this.token}`
-      }
+      },
+      json: true
     });
   }
   post(url, data) {
