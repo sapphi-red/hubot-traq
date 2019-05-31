@@ -5,7 +5,11 @@ class ChannelCreated extends Message {
     const u = Object.assign({}, channel.creator);
     const c = Object.assign({}, channel);
     c.creator = null;
-    u.room = channel;
+    u.room = {
+      type: "channel",
+      id: channel.id,
+      data: channel
+    };
     super(u, done);
 
     this.eventTime = eventTime;

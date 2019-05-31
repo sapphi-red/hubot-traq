@@ -32,7 +32,19 @@ class Request {
       json: true
     });
   }
-  sendMessage({ channelID, userID }, ...strings) {
+  sendMessage({ room, channelID, userID }, ...strings) {
+    if (room) {
+      switch (room.type) {
+        case "channel":
+          sendMessageToChannel(room.id, ...strings);
+          break;
+        case "dm":
+          sendMessageToUser(room.id, ...strings);
+          break;
+        case "none":
+          throw new Error("envelopeにroom.typeが存在しません");
+      }
+    }
     if (channelID) return sendMessageToChannel(channelID, ...strings);
     if (userID) return sendMessageToUser(userID, ...strings);
     throw new Error(
