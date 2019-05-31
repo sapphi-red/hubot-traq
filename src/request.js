@@ -116,7 +116,7 @@ class Request {
             )}`
           );
         }
-        const stampID = await stampNameToID(stamp.name);
+        const stampID = await this.stampNameToID(stamp.name);
         if (!stampID) {
           throw new Error(
             `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
