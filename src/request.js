@@ -33,7 +33,7 @@ class Request {
     });
   }
   sendMessage(envelope, ...strings) {
-    { room, channelID, userID } = envelope
+    const { room, channelID, userID } = envelope;
     if (room) {
       switch (room.type) {
         case "channel":
@@ -49,7 +49,9 @@ class Request {
     if (channelID) return this.sendMessageToChannel(channelID, ...strings);
     if (userID) return this.sendMessageToUser(userID, ...strings);
     throw new Error(
-      "無効な引数が渡されました: hubot-traq/request/sendMessage(): " + JSON.stringify(envelope)
+      `無効な引数が渡されました: hubot-traq/request/sendMessage(): ${JSON.stringify(
+        envelope
+      )}`
     );
   }
   sendMessageToChannel(channelID, ...strings) {
