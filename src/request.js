@@ -110,7 +110,7 @@ class Request {
       );
     }
 
-    return this.put(`/channels/${channelID}/topic`, {
+    return this.put(`/channels/${room.id || channelID}/topic`, {
       text: strings.join("\n")
     });
   }
