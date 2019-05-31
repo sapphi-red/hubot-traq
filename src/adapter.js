@@ -40,9 +40,9 @@ class TraQAdapter extends Adapter {
   }
 
   // ここから送信
-  async send(envelope, strings) {
+  async send(envelope, ...strings) {
     this.robot.logger.info("Send");
-    await this.request.sendMessage(envelope, strings);
+    await this.request.sendMessage(envelope, ...strings);
     this.robot.logger.debug("Sent");
   }
 

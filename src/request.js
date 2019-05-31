@@ -51,12 +51,12 @@ class Request {
       "無効な引数が渡されました: hubot-traq/request/sendMessage()"
     );
   }
-  sendMessageToChannel(channelID, strings) {
+  sendMessageToChannel(channelID, ...strings) {
     return this.post(`/channels/${channelID}/messages`, {
       text: strings.join("\n")
     });
   }
-  sendMessageToUser(userID, strings) {
+  sendMessageToUser(userID, ...strings) {
     return this.post(`/users/${userID}/messages`, {
       text: strings.join("\n")
     });
