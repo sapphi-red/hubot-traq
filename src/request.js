@@ -73,13 +73,13 @@ class Request {
       );
     }
     const userMention = this.createUserString(user);
-    strings[0] = userMention + strings[0];
+    strings[0] = `${userMention} ${strings[0]}`;
     return this.sendMessage(envelope, ...strings);
   }
   createUserString(user) {
     return `!${JSON.stringify({
       type: "user",
-      raw: `${user.name}`,
+      raw: `@${user.name}`,
       id: user.id
     })}`;
   }
