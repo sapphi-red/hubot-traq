@@ -1,4 +1,6 @@
-const BASE_URL = "https://q.trap.jp/api";
+const request = require("request-promise-native");
+
+const BASE_URL = "https://q.trap.jp/api/1.0";
 
 class Request {
   constructor(token, robot) {
@@ -7,33 +9,27 @@ class Request {
   }
 
   get(url) {
-    return new Promise((resolve, reject) => {
-      this.robot
-        .http(`${BASE_URL}${url}`)
-        .header("Content-Type", "application/json")
-        .header("Authorization", `Bearer ${this.token}`)
-        .get((err, res, body) => {
-          if (err) {
-            reject(err);
-            return;
-          }
-          resolve(res, body);
-        });
+    return request({
+      url,
+      baseUrl: BASE_URL,
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.token}`
+      }
     });
   }
   post(url, data) {
-    return new Promise((resolve, reject) => {
-      this.robot
-        .http(`${BASE_URL}${url}`)
-        .header("Content-Type", "application/json")
-        .header("Authorization", `Bearer ${this.token}`)
-        .post(JSON.stringify(data), (err, res, body) => {
-          if (err) {
-            reject(err);
-            return;
-          }
-          resolve(res, body);
-        });
+    return request({
+      url,
+      baseUrl: BASE_URL,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.token}`
+      },
+      body: data,
+      json: true
     });
   }
 }
