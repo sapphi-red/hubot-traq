@@ -1,7 +1,4 @@
 const {
-  Ping,
-  Joined,
-  Left,
   MessageCreated,
   DirectMessageCreated,
   ChannelCreated,
@@ -52,24 +49,6 @@ class TraQEventHandler {
     }
   }
 
-  ping(data) {
-    return {
-      type: "ping",
-      data: new Ping(data)
-    };
-  }
-  joined(data) {
-    return {
-      type: "joined",
-      data: new Joined(data)
-    };
-  }
-  left(data) {
-    return {
-      type: "left",
-      data: new Left(data)
-    };
-  }
   messageCreated(data) {
     return {
       type: "messageCreated",
