@@ -14,13 +14,18 @@
 
 #### ローカルでbotをテストする
 
-- `HUBOT_TRAQ_ID=your-id HUBOT_TRAQ_VERIFY_TOKEN=your-verify-token HUBOT_TRAQ_ACCESS_TOKEN=your-access-token ./bin/hubot --adapter traq`
+- `HUBOT_TRAQ_ID=your-id HUBOT_TRAQ_VERIFY_TOKEN=your-verify-token HUBOT_TRAQ_ACCESS_TOKEN=your-access-token ./bin/hubot -a traq -u your-bot-traq-id`
+
+> - `your-id` BOT User ID
+> - `your-verify-token` BOT Verification Code
+> - `your-access-token` BOT Access Token
+> - `your-bot-traq-id` traQ ID (例: `@BOT_TEST`なら`BOT_TEST`)
 
 ## 設定
 このアダプターは以下の環境変数を利用します
 
 - `HUBOT_TRAQ_ID` - traQで動かすHubotのUSER ID
-- `HUBOT_TRAQ_VERIFY_TOKEN` - traQで動かすHubotのverify token
+- `HUBOT_TRAQ_VERIFY_TOKEN` - traQで動かすHubotのverification code
 - `HUBOT_TRAQ_ACCESS_TOKEN` - traQで動かすHubotのaccess token
 
 
