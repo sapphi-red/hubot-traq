@@ -32,6 +32,19 @@ class Request {
       json: true
     });
   }
+  put(url, data) {
+    return request({
+      url,
+      baseUrl: BASE_URL,
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.token}`
+      },
+      body: data,
+      json: true
+    });
+  }
   sendMessage(envelope, ...strings) {
     const { room, channelID, userID } = envelope;
     if (room) {
@@ -82,6 +95,24 @@ class Request {
       raw: `@${user.name}`,
       id: user.id
     })}`;
+  }
+
+  setTopic(envelope, ...strings) {
+    const { room, channelID, userID } = envelope;
+    if (room && room.type !== "channel") {
+      throw new Error("envelope.room.typeはchannelではありません");
+    }
+    if (!room && !channelID) {
+      throw new Error(
+        `無効な引数が渡されました: hubot-traq/request/setTopic(): ${JSON.stringify(
+          envelope
+        )}`
+      );
+    }
+
+    return this.put(`/channels/${channelID}/topic`, {
+      text: strings.join("\n")
+    });
   }
 }
 

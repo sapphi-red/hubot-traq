@@ -51,6 +51,12 @@ class TraQAdapter extends Adapter {
     await this.request.replyMessage(envelope, ...strings);
     this.robot.logger.debug("Reply");
   }
+
+  async topic(envelope, ...strings) {
+    this.robot.logger.info("Topic");
+    await this.request.setTopic(envelope, ...strings);
+    this.robot.logger.debug("Topic");
+  }
 }
 
 module.exports = TraQAdapter;
