@@ -52,12 +52,12 @@ class Request {
     );
   }
   sendMessageToChannel(channelID, strings) {
-    return this.request.post(`/channels/${channelID}/messages`, {
+    return this.post(`/channels/${channelID}/messages`, {
       text: strings.join("\n")
     });
   }
   sendMessageToUser(userID, strings) {
-    return this.request.post(`/users/${userID}/messages`, {
+    return this.post(`/users/${userID}/messages`, {
       text: strings.join("\n")
     });
   }
