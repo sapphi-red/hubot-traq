@@ -21,7 +21,7 @@ class TraQAdapter extends Adapter {
 
     // イベント受信
     this.robot.router.post(this.path, (req, res) => {
-      res.send("OK");
+      res.status(204).end();
       this.robot.logger.debug("Recieved Request");
 
       try {
