@@ -5,8 +5,7 @@ class MessageCreated extends TextMessage {
     const u = Object.assign({}, message.user);
     u.room = {
       type: "channel",
-      id: channel.id,
-      data: channel
+      id: message.channelId
     };
     super(u, message.plainText, message.id);
 
