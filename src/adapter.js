@@ -40,20 +40,9 @@ class TraQAdapter extends Adapter {
   }
 
   // ここから送信
-  async send(envelope, ...strings) {
+  async send(envelope, strings) {
     this.robot.logger.info("Send");
-
-    if (envelope.channelID) {
-      await this.request.post(`/channels/${envelope.channelID}/messages`, {
-        text: strings.join("\n")
-      });
-    } else if (envelope.userID) {
-      await this.request.post(`/users/${envelope.userID}/messages`, {
-        text: strings.join("\n")
-      });
-    } else {
-      throw new Error("不明なsend()です");
-    }
+    await this.request.sendMessage(envelope, strings);
     this.robot.logger.debug("Sent");
   }
 

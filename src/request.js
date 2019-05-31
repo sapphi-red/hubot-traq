@@ -32,6 +32,23 @@ class Request {
       json: true
     });
   }
+  sendMessage({ channelID, userID }, ...strings) {
+    if (channelID) return sendMessageToChannel(channelID, ...strings);
+    if (userID) return sendMessageToUser(userID, ...strings);
+    throw new Error(
+      "無効な引数が渡されました: hubot-traq/request/sendMessage()"
+    );
+  }
+  sendMessageToChannel(channelID, strings) {
+    return this.request.post(`/channels/${channelID}/messages`, {
+      text: strings.join("\n")
+    });
+  }
+  sendMessageToUser(userID, strings) {
+    return this.request.post(`/users/${userID}/messages`, {
+      text: strings.join("\n")
+    });
+  }
 }
 
 module.exports = Request;
