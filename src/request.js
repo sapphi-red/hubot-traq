@@ -46,21 +46,42 @@ class Request {
     });
   }
   sendMessage(envelope, ...strings) {
-    const { room, channelID, userID } = envelope;
-    if (room) {
-      switch (room.type) {
-        case "channel":
-          return this.sendMessageToChannel(room.id, ...strings);
-        case "dm":
-          return this.sendMessageToUser(room.id, ...strings);
-        case "none":
-          throw new Error("envelope.room.typeはnoneです");
+    const texts = [];
+    const stamps = [];
+    for (const string of strings) {
+      if (typeof string === "string") {
+        texts.push(string);
+        continue;
+      }
+      if (string.type === "stamp") {
+        stamps.push(string);
       }
     }
-    if (channelID) return this.sendMessageToChannel(channelID, ...strings);
-    if (userID) return this.sendMessageToUser(userID, ...strings);
+
+    return Promise.all([
+      this.sendTextMessage(envelope, ...texts),
+      this.sendStamp(envelope, ...stamps)
+    ]);
+  }
+  sendTextMessage(envelope, ...strings) {
+    const { room, channelID, userID } = envelope;
+
+    if (room && room.type === "none") {
+      throw new Error("envelope.room.typeはnoneです");
+    }
+
+    if ((room && room.type === "channel") || channelID) {
+      const id = channelID || room.id;
+      return this.sendMessageToChannel(id, ...strings);
+    }
+
+    if ((room && room.type === "dm") || userID) {
+      const id = userID || room.id;
+      return this.sendMessageToUser(id, ...strings);
+    }
+
     throw new Error(
-      `無効な引数が渡されました: hubot-traq/request/sendMessage(): ${JSON.stringify(
+      `無効な引数が渡されました: hubot-traq/request/sendTextMessage(): ${JSON.stringify(
         envelope
       )}`
     );
@@ -75,6 +96,31 @@ class Request {
       text: strings.join("\n")
     });
   }
+  sendStamp(envelope, ...stamps) {
+    const { message } = envelope;
+    if ((!message || !message.id) && messageID) {
+      throw new Error(
+        `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
+          envelope
+        )}`
+      );
+    }
+    return Promise.all(
+      stamps.map(stamp => {
+        if (!stamp.id) {
+          throw new Error(
+            `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
+              stamps
+            )}`
+          );
+        }
+        return this.post(
+          `/messages/${messageID || message.id}/stamps/${stamp.id}`,
+          {}
+        );
+      })
+    );
+  }
 
   replyMessage(envelope, ...strings) {
     const { user } = envelope;
@@ -86,7 +132,15 @@ class Request {
       );
     }
     const userMention = this.createUserString(user);
-    strings[0] = `${userMention} ${strings[0]}`;
+    const i = string.findIndex(s => typeof s === "string");
+    if (i === -1) {
+      throw new Error(
+        `無効な引数が渡されました: hubot-traq/request/replyMessage(): ${JSON.stringify(
+          strings
+        )}`
+      );
+    }
+    strings[i] = `${userMention} ${strings[i]}`;
     return this.sendMessage(envelope, ...strings);
   }
   createUserString(user) {
@@ -110,10 +164,15 @@ class Request {
       );
     }
 
-    return this.put(`/channels/${room.id || channelID}/topic`, {
+    return this.put(`/channels/${channelID || room.id}/topic`, {
       text: strings.join("\n")
     });
   }
+
+  /*
+    reaction送信用だがsendに実装
+  */
+  // emote(envelope, strings...) {}
 }
 
 module.exports = Request;
