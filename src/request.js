@@ -37,11 +37,9 @@ class Request {
     if (room) {
       switch (room.type) {
         case "channel":
-          this.sendMessageToChannel(room.id, ...strings);
-          break;
+          return this.sendMessageToChannel(room.id, ...strings);
         case "dm":
-          this.sendMessageToUser(room.id, ...strings);
-          break;
+          return this.sendMessageToUser(room.id, ...strings);
         case "none":
           throw new Error("envelope.room.typeはnoneです");
       }
