@@ -1,10 +1,11 @@
-const Base = require("./Base");
+const { Message } = require("hubot/es2015");
 
-class UserCreated extends Base {
+class UserCreated extends Message {
   constructor({ eventTime, user }, done) {
-    super(eventTime, done);
+    user.room = null;
+    super(user, done);
 
-    this.user = user;
+    this.eventTime = eventTime;
   }
 }
 

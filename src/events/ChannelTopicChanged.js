@@ -1,10 +1,14 @@
-const Base = require("./Base");
+const { TopicMessage } = require("hubot/es2015");
 
-class ChannelTopicChanged extends Base {
-  constructor({ eventTime, channel }, done) {
-    super(eventTime, done);
+class ChannelTopicChanged extends TopicMessage {
+  constructor({ eventTime, channel, topic, updater }) {
+    const u = updater;
+    u.room = channel;
+    const text = topic;
+    const id = null;
+    super(u, text, id);
 
-    this.channel = channel;
+    this.eventTime = eventTime;
   }
 }
 

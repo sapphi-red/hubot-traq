@@ -24,8 +24,11 @@ class TraQAdapter extends Adapter {
       this.robot.logger.debug("Recieved Request");
 
       try {
-        const { data } = this.handler.parse(req);
-        this.robot.receive(data);
+        const event = this.handler.parse(req);
+        if (event) {
+          this.robot.receive(event.data);
+        }
+
         res.status(204).end();
       } catch (e) {
         this.robot.logger.debug(`Error with request data: ${e}`);

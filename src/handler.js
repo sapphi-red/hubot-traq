@@ -34,11 +34,9 @@ class TraQEventHandler {
 
     switch (eventName) {
       case "PING":
-        return this.ping(req.body);
       case "JOINED":
-        return this.joined(req.body);
       case "LEFT":
-        return this.left(req.body);
+        return null;
       case "MESSAGE_CREATED":
         return this.messageCreated(req.body);
       case "DIRECT_MESSAGE_CREATED":
@@ -50,10 +48,7 @@ class TraQEventHandler {
       case "USER_CREATED":
         return this.userCreated(req.body);
       default:
-        return {
-          type: "unknown",
-          data: req.body
-        };
+        return null;
     }
   }
 

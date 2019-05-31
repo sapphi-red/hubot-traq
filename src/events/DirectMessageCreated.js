@@ -1,10 +1,15 @@
-const Base = require("./Base");
+const { TextMessage } = require("hubot/es2015");
 
-class DirectMessageCreated extends Base {
-  constructor({ eventTime, message }, done) {
-    super(eventTime, done);
+class DirectMessageCreated extends TextMessage {
+  constructor({ eventTime, message }) {
+    const u = message.user;
+    message.user.room = message.channelId;
+    super(message.user, message.plainText, message.id);
 
-    this.message = message;
+    this.rawText = message.text;
+    this.embedded = message.embedded;
+    this.createdAt = message.createdAt;
+    this.updatedAt = message.updatedAt;
   }
 }
 
