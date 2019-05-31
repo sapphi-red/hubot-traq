@@ -9,6 +9,7 @@ class ChannelCreated extends Message {
     super(u, done);
 
     this.eventTime = eventTime;
+    this.channel = channel;
   }
 }
 

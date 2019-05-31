@@ -6,6 +6,7 @@ class UserCreated extends Message {
     super(user, done);
 
     this.eventTime = eventTime;
+    this.userData = user;
   }
 }
 
