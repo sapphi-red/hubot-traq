@@ -28,9 +28,11 @@
 - `HUBOT_TRAQ_VERIFY_TOKEN` - traQで動かすHubotのverification code
 - `HUBOT_TRAQ_ACCESS_TOKEN` - traQで動かすHubotのaccess token
 
-
+## リファレンス
+[Wiki][]
 
 [traQ]: https://github.com/traPtitech/traQ/
 [Hubot]: https://hubot.github.com/
 [cmd-docs]: https://hubot.github.com/docs/
 [docs]: https://github.com/github/hubot/tree/master/docs
+[Wiki]: https://github.com/sapphi-red/hubot-traq/wiki
