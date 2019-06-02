@@ -7,6 +7,7 @@ class UserCreated extends Message {
     };
     super(user, done);
 
+    this.type = "UserCreated";
     this.eventTime = eventTime;
     this.userData = user;
   }

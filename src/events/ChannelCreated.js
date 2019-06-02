@@ -12,6 +12,7 @@ class ChannelCreated extends Message {
     };
     super(u, done);
 
+    this.type = "ChannelCreated";
     this.eventTime = eventTime;
     this.channel = channel;
   }
