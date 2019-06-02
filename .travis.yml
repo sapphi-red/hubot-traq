@@ -5,7 +5,7 @@ node_js:
 
 branches:
   only:
-  - /^v?[\\d\\.]+/
+  - /^v?[\d\.]+/
 
 script: "true"
 
