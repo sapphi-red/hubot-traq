@@ -18,10 +18,10 @@ cd /path/to/hubot
 yo hubot
 ```
 
-ここまでしたら、画面にしたがって入力していき、**Bot adapter**と表示されたら`traq`と入力します
+ここまでしたら、画面にしたがって入力していき、**Bot adapter**と表示されたら`traq`と入力します  
 (もしくは`yo hubot`のあとに[すべてコマンド引数で指定することもできます][cmd-docs])
 
-既定で入っているscriptsが存在するので一度のぞきます(このままだとredisがないだの怒られるため)
+既定で入っているscriptsが存在するので一度除きます(このままだとredisがないだの怒られるため)  
 `./external-scripts.json`を開いて`[]`にします
 
 ```bash
@@ -53,6 +53,12 @@ entrypoint: exec node_modules/.bin/hubot -a traq -n "your-bot-traq-id" "$@"
 http_proxy: 8080
 ```
 このようにするとshowcaseで実行できます
+
+#### `javascript` `coffeescript`
+`./scripts/example.coffee`が存在していますが、拡張子が`.coffee`ではなく`.js`のファイルを`./scripts`に置くことでcoffeescriptではなくjavascriptで書くことも可能です  
+ただし、この場合でも`npm -g coffee-script`は必要です
+
+---
 
 さらに詳しい説明は[hubotのドキュメント][docs]を参照してください
 
