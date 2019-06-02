@@ -3,6 +3,8 @@ language: node_js
 node_js:
 - stable
 
+script: "true"
+
 deploy:
   provider: npm
   email: green@sapphi.red
