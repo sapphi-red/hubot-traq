@@ -64,8 +64,8 @@ http_proxy: 8080
 さらに詳しい説明は[hubotのドキュメント][docs]を参照してください
 
 ## リファレンス
-[Wiki][]
-[Example][]
+- [Wiki][]
+- [Example][]
 
 [traQ]: https://github.com/traPtitech/traQ/
 [Hubot]: https://hubot.github.com/
