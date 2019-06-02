@@ -22,7 +22,8 @@ yo hubot
 (もしくは`yo hubot`のあとに[すべてコマンド引数で指定することもできます][cmd-docs])
 
 既定で入っているscriptsが存在するので一度除きます(このままだとredisがないだの怒られるため)  
-`./external-scripts.json`を開いて`[]`にします
+`./external-scripts.json`を開いて`[]`にします  
+`package.json`の`dependencies`の`hubot`と`hubot-traq`以外を取り除いて`npm install`をするといいかもしれません
 
 ```bash
 # gitレポジトリの作成
@@ -64,9 +65,11 @@ http_proxy: 8080
 
 ## リファレンス
 [Wiki][]
+[Example][]
 
 [traQ]: https://github.com/traPtitech/traQ/
 [Hubot]: https://hubot.github.com/
 [cmd-docs]: https://hubot.github.com/docs/
 [docs]: https://github.com/github/hubot/tree/master/docs
 [Wiki]: https://github.com/sapphi-red/hubot-traq/wiki
+[Example]: https://github.com/sapphi-red/traq-hubot-example
