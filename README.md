@@ -1,33 +1,60 @@
 # hubot-traq
-[![NPM](https://nodei.co/npm/hubot-traq.png)](https://nodei.co/npm/hubot-traq/) [![Build Status](https://travis-ci.org/sapphi-red/hubot-traq.svg?branch=master)](https://travis-ci.org/sapphi-red/hubot-traq) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![NPM](https://nodei.co/npm/hubot-traq.png)](https://nodei.co/npm/hubot-traq/) [![Build Status](https://travis-ci.org/sapphi-red/hubot-traq.svg?branch=master)](https://travis-ci.org/sapphi-red/hubot-traq) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)  
+
 [traQ][]用[Hubot][]アダプター
 
 ## 使い方
 
-#### 新しいbotをつくる
+### 新しいbotをつくる
 
-- `npm install -g hubot coffee-script yo generator-hubot`
-- `mkdir -p /path/to/hubot`
-- `cd /path/to/hubot`
-- `yo hubot`と打ち**Bot adapter**と表示されたら`traq`と入力します(もしくは[すべてコマンド引数で指定します][cmd-docs])
-- gitを初期化(init)して初回コミットをします
-- ビルドのより詳しい説明は[hubotのドキュメント][docs]を参照してください
+#### インストール
+```bash
+# 利用ツールのインストール
+npm install -g hubot coffee-script yo generator-hubot
+# botを管理するディレクトリの作成
+mkdir -p /path/to/hubot
+cd /path/to/hubot
+# テンプレートの作成
+yo hubot
+```
 
-#### ローカルでbotをテストする
+ここまでしたら、画面にしたがって入力していき、**Bot adapter**と表示されたら`traq`と入力します
+(もしくは`yo hubot`のあとに[すべてコマンド引数で指定することもできます][cmd-docs])
 
-- `HUBOT_TRAQ_ID=your-id HUBOT_TRAQ_VERIFY_TOKEN=your-verify-token HUBOT_TRAQ_ACCESS_TOKEN=your-access-token ./bin/hubot -a traq -u your-bot-traq-id`
+既定で入っているscriptsが存在するので一度のぞきます(このままだとredisがないだの怒られるため)
+`./external-scripts.json`を開いて`[]`にします
 
-> - `your-id` BOT User ID
-> - `your-verify-token` BOT Verification Code
-> - `your-access-token` BOT Access Token
-> - `your-bot-traq-id` traQ ID (例: `@BOT_TEST`なら`BOT_TEST`)
+```bash
+# gitレポジトリの作成
+git init
+git add .
+git commit -m "Init"
+```
 
-## 設定
-このアダプターは以下の環境変数を利用します
-
+#### 初期設定
+下記の環境変数をそれぞれ設定します
 - `HUBOT_TRAQ_ID` - traQで動かすHubotのUSER ID
-- `HUBOT_TRAQ_VERIFY_TOKEN` - traQで動かすHubotのverification code
-- `HUBOT_TRAQ_ACCESS_TOKEN` - traQで動かすHubotのaccess token
+- `HUBOT_TRAQ_VERIFY_TOKEN` - traQで動かすHubotのVerification Code
+- `HUBOT_TRAQ_ACCESS_TOKEN` - traQで動かすHubotのAccess Token
+
+Verification CodeなどはそれぞれtraQのBot Consoleから確認できます
+
+#### 実行
+```
+./bin/hubot -a traq -n "your-bot-traq-id"
+```
+- `your-bot-traq-id` - traQ ID (例: `@BOT_TEST`なら`BOT_TEST`)
+
+#### showcase.yaml
+```yml
+type: runtime
+startup: npm install -g coffee-script && npm install && npm update && export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
+entrypoint: exec node_modules/.bin/hubot -a traq -n "your-bot-traq-id" "$@"
+http_proxy: 8080
+```
+このようにするとshowcaseで実行できます
+
+さらに詳しい説明は[hubotのドキュメント][docs]を参照してください
 
 ## リファレンス
 [Wiki][]
