@@ -58,10 +58,14 @@ class Request {
       }
     }
 
-    return Promise.all([
-      this.sendTextMessage(envelope, ...texts),
-      this.sendStamp(envelope, ...stamps)
-    ]);
+    const promises = [];
+    if (texts.length > 0) {
+      promises.push(this.sendStamp(envelope, ...texts));
+    }
+    if (stamps.length > 0) {
+      promises.push(this.sendStamp(envelope, ...stamps));
+    }
+    return Promise.all(promises);
   }
   sendTextMessage(envelope, ...strings) {
     const { room, channelID, userID } = envelope;
