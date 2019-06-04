@@ -1,6 +1,6 @@
 {
   "name": "hubot-traq",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Hubot adapter for traQ.",
   "main": "./traq",
   "scripts": {
