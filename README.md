@@ -8,6 +8,7 @@
 ### 新しいbotをつくる
 
 #### インストール
+前提として[Node.js][]が必要です
 ```bash
 # 利用ツールのインストール
 npm install -g hubot coffee-script yo generator-hubot
@@ -69,6 +70,7 @@ http_proxy: 8080
 
 [traQ]: https://github.com/traPtitech/traQ/
 [Hubot]: https://hubot.github.com/
+[Node.js]: https://nodejs.org/ja/
 [cmd-docs]: https://hubot.github.com/docs/
 [docs]: https://github.com/github/hubot/tree/master/docs
 [Wiki]: https://github.com/sapphi-red/hubot-traq/wiki
