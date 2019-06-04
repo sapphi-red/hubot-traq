@@ -60,7 +60,7 @@ class Request {
 
     const promises = [];
     if (texts.length > 0) {
-      promises.push(this.sendStamp(envelope, ...texts));
+      promises.push(this.sendTextMessage(envelope, ...texts));
     }
     if (stamps.length > 0) {
       promises.push(this.sendStamp(envelope, ...stamps));
