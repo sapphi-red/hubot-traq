@@ -7,22 +7,22 @@ const PATH_ENV_NAME = "HUBOT_TRAQ_PATH";
 
 const getEnvs = () => {
   const id = process.env[ID_ENV_NAME];
-  if (!id) {
+  if (id === null) {
     throw new Error("HUBOT_TRAQ_IDが存在しません");
   }
 
   const verifyToken = process.env[VERIFY_TOKEN_ENV_NAME];
-  if (!verifyToken) {
+  if (verifyToken === null) {
     throw new Error("HUBOT_TRAQ_VERIFY_TOKENが存在しません");
   }
 
   const accessToken = process.env[ACCESS_TOKEN_ENV_NAME];
-  if (!accessToken) {
+  if (accessToken === null) {
     throw new Error("HUBOT_TRAQ_ACCESS_TOKENが存在しません");
   }
 
   const path = process.env[PATH_ENV_NAME];
-  if (!path) {
+  if (path === null) {
     throw new Error("HUBOT_TRAQ_PATHが存在しません");
   }
 
