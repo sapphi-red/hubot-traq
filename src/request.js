@@ -152,7 +152,7 @@ class Request {
       );
     }
     const userMention = this.createUserString(user);
-    const i = string.findIndex(s => typeof s === "string");
+    const i = strings.findIndex(s => typeof s === "string");
     if (i === -1) {
       throw new Error(
         `無効な引数が渡されました: hubot-traq/request/replyMessage(): ${JSON.stringify(
