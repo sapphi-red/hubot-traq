@@ -58,7 +58,7 @@ http_proxy: 8080
 このようにするとshowcaseで実行できます
 
 #### `javascript` `coffeescript`
-`./scripts/example.coffee`が存在していますが、拡張子が`.coffee`ではなく`.js`のファイルを`./scripts`に置くことでcoffeescriptではなくjavascriptで書くことも可能です  
+`./scripts/example.coffee`が存在していますが、拡張子が`.coffee`ではなく`.js`のファイルを`./scripts`に置くことでcoffeescriptではなくJavaScriptで書くことも可能です  
 ただし、この場合でも`npm -g coffee-script`は必要です
 
 ---
