@@ -38,6 +38,7 @@ git commit -m "Init"
 - `HUBOT_TRAQ_ID` - traQで動かすHubotのUSER ID
 - `HUBOT_TRAQ_VERIFY_TOKEN` - traQで動かすHubotのVerification Code
 - `HUBOT_TRAQ_ACCESS_TOKEN` - traQで動かすHubotのAccess Token
+- `HUBOT_TRAQ_PATH` - Botサーバーエンドポイントのパス(直下で受け取るなら`""`、`/webhook/`で受け取るなら`"/webhook/"`)
 
 Verification CodeなどはそれぞれtraQのBot Consoleから確認できます
 
