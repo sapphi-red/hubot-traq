@@ -3,7 +3,8 @@ const {
   DirectMessageCreated,
   ChannelCreated,
   ChannelTopicChanged,
-  UserCreated
+  UserCreated,
+  StampCreated
 } = require("./events/events");
 
 const TOKEN_HEADER = "X-TRAQ-BOT-TOKEN";
@@ -44,6 +45,8 @@ class TraQEventHandler {
         return this.channelTopicChanged(req.body);
       case "USER_CREATED":
         return this.userCreated(req.body);
+      case "STAMP_CREATED":
+        return this.stampCreated(req.body);
       default:
         return null;
     }
@@ -77,6 +80,12 @@ class TraQEventHandler {
     return {
       type: "userCreated",
       data: new UserCreated(data)
+    };
+  }
+  stampCreated(data) {
+    return {
+      type: "stampCreated",
+      data: new StampCreated(data)
     };
   }
 }
