@@ -35,7 +35,7 @@ git commit -m "Init"
 
 #### 初期設定
 下記の環境変数をそれぞれ設定します
-- `HUBOT_TRAQ_ID` - traQで動かすHubotのUSER ID
+- `HUBOT_TRAQ_NAME` - traQで動かすHubotのtraQ ID (例: `@BOT_TEST`なら`BOT_TEST`)
 - `HUBOT_TRAQ_VERIFY_TOKEN` - traQで動かすHubotのVerification Code
 - `HUBOT_TRAQ_ACCESS_TOKEN` - traQで動かすHubotのAccess Token
 - `HUBOT_TRAQ_PATH` - Botサーバーエンドポイントのパス(直下で受け取るなら`""`、`/webhook/`で受け取るなら`"/webhook/"`)
@@ -44,15 +44,14 @@ Verification CodeなどはそれぞれtraQのBot Consoleから確認できます
 
 #### 実行
 ```
-./bin/hubot -a traq -n "your-bot-traq-id"
+./bin/hubot -a traq -n "$HUBOT_TRAQ_NAME"
 ```
-- `your-bot-traq-id` - traQ ID (例: `@BOT_TEST`なら`BOT_TEST`)
 
 #### showcase.yaml
 ```yml
 type: runtime
 startup: npm install -g coffee-script && npm install && npm update && export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
-entrypoint: exec node_modules/.bin/hubot -a traq -n "your-bot-traq-id" "$@"
+entrypoint: exec node_modules/.bin/hubot -a traq -n "$HUBOT_TRAQ_NAME" "$@"
 http_proxy: 8080
 ```
 このようにするとshowcaseで実行できます

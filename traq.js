@@ -1,14 +1,14 @@
 const TraQAdapter = require("./src/adapter.js");
 
-const ID_ENV_NAME = "HUBOT_TRAQ_ID";
+const NAME_ENV_NAME = "HUBOT_TRAQ_NAME";
 const VERIFY_TOKEN_ENV_NAME = "HUBOT_TRAQ_VERIFY_TOKEN";
 const ACCESS_TOKEN_ENV_NAME = "HUBOT_TRAQ_ACCESS_TOKEN";
 const PATH_ENV_NAME = "HUBOT_TRAQ_PATH";
 
 const getEnvs = () => {
-  const id = process.env[ID_ENV_NAME];
-  if (id === null) {
-    throw new Error("HUBOT_TRAQ_IDが存在しません");
+  const name = process.env[NAME_ENV_NAME];
+  if (name === null) {
+    console.warn("HUBOT_TRAQ_NAMEが存在しません");
   }
 
   const verifyToken = process.env[VERIFY_TOKEN_ENV_NAME];
@@ -26,7 +26,7 @@ const getEnvs = () => {
     throw new Error("HUBOT_TRAQ_PATHが存在しません");
   }
 
-  return { id, verifyToken, accessToken, path };
+  return { verifyToken, accessToken, path };
 };
 
 exports.use = robot => {

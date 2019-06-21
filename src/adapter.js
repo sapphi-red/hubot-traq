@@ -3,11 +3,10 @@ const Request = require("./request");
 const Handler = require("./handler");
 
 class TraQAdapter extends Adapter {
-  constructor(robot, { id, verifyToken, accessToken, path }) {
+  constructor(robot, { verifyToken, accessToken, path }) {
     super(robot);
     this.robot = robot;
 
-    this.id = id;
     this.path = path;
 
     this.request = new Request(accessToken, robot);
