@@ -3,14 +3,16 @@
 
 ## [Unreleased]
 ### 追加
+- `HUBOT_TRAQ_NAME`の利用を推奨
 - **CHANGELOG**: 作成
 
 ### 変更
-- `HUBOT_TRAQ_ID`の利用を廃止、`HUBOT_TRAQ_NAME`の利用を推奨
 - 環境変数が存在しないエラーとその判定を変更
 - **README**: `./hubot-scripts.json`について加筆
 - **README**: `showcase.yaml`で`npm ci`を使用するように
 
+### 削除
+- `HUBOT_TRAQ_ID`の利用を廃止
 
 # [1.2.0][] - 2019-06-18
 ### 追加
