@@ -59,9 +59,12 @@ http_proxy: 8080
 ```
 このようにするとshowcaseで実行できます
 
-#### `javascript` `coffeescript`
+#### `javascript` `coffeescript` `typescript`
 `./scripts/example.coffee`が存在していますが、拡張子が`.coffee`ではなく`.js`のファイルを`./scripts`に置くことでcoffeescriptではなくJavaScriptで書くことも可能です  
-ただし、この場合でも`npm install -g coffee-script`は必要です
+ただし、この場合でも`npm install -g coffee-script`は必要です  
+
+また、Typescriptで書くことも可能です。  
+ただし、あまり型の恩恵を受けれないと思います…。  
 
 ---
 
@@ -73,6 +76,7 @@ http_proxy: 8080
 ## リファレンス
 - [Wiki][]
 - [Example][]
+- [Example with Typescript][]
 
 [traQ]: https://github.com/traPtitech/traQ/
 [Hubot]: https://hubot.github.com/
@@ -81,4 +85,5 @@ http_proxy: 8080
 [docs]: https://github.com/github/hubot/tree/master/docs
 [Wiki]: https://github.com/sapphi-red/hubot-traq/wiki
 [Example]: https://github.com/sapphi-red/traq-hubot-example
+[Example with Typescript]: https://github.com/sapphi-red/traq-hubot-example-ts
 [Change log]: https://github.com/sapphi-red/hubot-traq/blob/master/CHANGELOG.md

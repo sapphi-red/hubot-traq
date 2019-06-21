@@ -8,6 +8,7 @@
 
 ### 変更
 - 環境変数が存在しないエラーとその判定を変更
+- **README**: Typescriptの例とそれの説明を追加
 - **README**: `./hubot-scripts.json`について加筆
 - **README**: `showcase.yaml`で`npm ci`を使用するように
 
