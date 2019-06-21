@@ -50,7 +50,9 @@ Verification CodeなどはそれぞれtraQのBot Consoleから確認できます
 #### showcase.yaml
 ```yml
 type: runtime
-startup: npm install -g coffee-script && npm install && npm update && export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
+startup: |
+  npm install -g coffee-script
+  npm ci
 entrypoint: exec node_modules/.bin/hubot -a traq -n "$HUBOT_TRAQ_NAME" "$@"
 http_proxy: 8080
 ```
