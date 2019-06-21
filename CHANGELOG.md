@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+# [1.2.1][] - 2019-06-21
 ### 追加
 - `HUBOT_TRAQ_NAME`の利用を推奨
 - **CHANGELOG**: 作成
@@ -56,7 +58,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/sapphi-red/hubot-traq/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.1.4...v1.2.0
 [1.1.4]: https://github.com/sapphi-red/hubot-traq/compare/v1.1.3...v1.1.4
 [1.1.3]: https://github.com/sapphi-red/hubot-traq/compare/v1.1.2...v1.1.3
