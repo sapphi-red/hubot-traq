@@ -24,7 +24,8 @@ yo hubot
 
 既定で入っているscriptsが存在するので一度除きます(このままだとredisがないだの怒られるため)  
 `./external-scripts.json`を開いて`[]`にします  
-`package.json`の`dependencies`の`hubot`と`hubot-traq`以外を取り除いて`npm install`をするといいかもしれません
+`package.json`の`dependencies`の`hubot`と`hubot-traq`以外を取り除いて`npm install`をするといいかもしれません  
+さらに`./hubot-scripts.json`を消すと非推奨というエラーが出なくなります
 
 ```bash
 # gitレポジトリの作成
