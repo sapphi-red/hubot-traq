@@ -67,6 +67,9 @@ http_proxy: 8080
 
 さらに詳しい説明は[hubotのドキュメント][docs]を参照してください
 
+## Changelog
+- [Change log][]
+
 ## リファレンス
 - [Wiki][]
 - [Example][]
@@ -78,3 +81,4 @@ http_proxy: 8080
 [docs]: https://github.com/github/hubot/tree/master/docs
 [Wiki]: https://github.com/sapphi-red/hubot-traq/wiki
 [Example]: https://github.com/sapphi-red/traq-hubot-example
+[Change log]: https://github.com/sapphi-red/hubot-traq/blob/master/CHANGELOG.md
