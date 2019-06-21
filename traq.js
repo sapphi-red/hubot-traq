@@ -7,23 +7,24 @@ const PATH_ENV_NAME = "HUBOT_TRAQ_PATH";
 
 const getEnvs = () => {
   const name = process.env[NAME_ENV_NAME];
-  if (name === null) {
+  if (typeof name === "undefined") {
     console.warn("HUBOT_TRAQ_NAMEが存在しません");
   }
 
   const verifyToken = process.env[VERIFY_TOKEN_ENV_NAME];
-  if (verifyToken === null) {
+  if (typeof verifyToken === "undefined") {
     throw new Error("HUBOT_TRAQ_VERIFY_TOKENが存在しません");
   }
 
   const accessToken = process.env[ACCESS_TOKEN_ENV_NAME];
-  if (accessToken === null) {
+  if (typeof accessToken === "undefined") {
     throw new Error("HUBOT_TRAQ_ACCESS_TOKENが存在しません");
   }
 
-  const path = process.env[PATH_ENV_NAME];
-  if (path === null) {
-    throw new Error("HUBOT_TRAQ_PATHが存在しません");
+  let path = process.env[PATH_ENV_NAME];
+  if (typeof path === "undefined") {
+    console.warn("HUBOT_TRAQ_PATHが存在しません。'/'が利用されます");
+    path = "/";
   }
 
   return { verifyToken, accessToken, path };
