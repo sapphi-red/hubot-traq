@@ -1,13 +1,13 @@
-const request = require("request-promise-native");
+const request = require("request-promise-native")
 
-const BASE_URL = "https://q.trap.jp/api/1.0";
+const BASE_URL = "https://q.trap.jp/api/1.0"
 
 class Request {
   constructor(token, robot) {
-    this.token = token;
-    this.robot = robot;
+    this.token = token
+    this.robot = robot
 
-    this.stampIDTablePromise = this.get("/stamps");
+    this.stampIDTablePromise = this.get("/stamps")
   }
 
   get(url) {
@@ -19,7 +19,7 @@ class Request {
         bearer: this.token
       },
       json: true
-    });
+    })
   }
   post(url, data) {
     return request({
@@ -31,7 +31,7 @@ class Request {
       },
       body: data,
       json: true
-    });
+    })
   }
   put(url, data) {
     return request({
@@ -43,71 +43,71 @@ class Request {
       },
       body: data,
       json: true
-    });
+    })
   }
   sendMessage(envelope, ...strings) {
-    const texts = [];
-    const stamps = [];
+    const texts = []
+    const stamps = []
     for (const string of strings) {
       if (typeof string === "string") {
-        texts.push(string);
-        continue;
+        texts.push(string)
+        continue
       }
       if (string.type === "stamp") {
-        stamps.push(string);
+        stamps.push(string)
       }
     }
 
-    const promises = [];
+    const promises = []
     if (texts.length > 0) {
-      promises.push(this.sendTextMessage(envelope, ...texts));
+      promises.push(this.sendTextMessage(envelope, ...texts))
     }
     if (stamps.length > 0) {
-      promises.push(this.sendStamp(envelope, ...stamps));
+      promises.push(this.sendStamp(envelope, ...stamps))
     }
-    return Promise.all(promises);
+    return Promise.all(promises)
   }
   sendTextMessage(envelope, ...strings) {
-    const { room, channelID, userID } = envelope;
+    const { room, channelID, userID } = envelope
 
     if (room && room.type === "none") {
-      throw new Error("envelope.room.typeはnoneです");
+      throw new Error("envelope.room.typeはnoneです")
     }
 
     if ((room && room.type === "channel") || channelID) {
-      const id = channelID || room.id;
-      return this.sendMessageToChannel(id, ...strings);
+      const id = channelID || room.id
+      return this.sendMessageToChannel(id, ...strings)
     }
 
     if ((room && room.type === "dm") || userID) {
-      const id = userID || room.id;
-      return this.sendMessageToUser(id, ...strings);
+      const id = userID || room.id
+      return this.sendMessageToUser(id, ...strings)
     }
 
     throw new Error(
       `無効な引数が渡されました: hubot-traq/request/sendTextMessage(): ${JSON.stringify(
         envelope
       )}`
-    );
+    )
   }
   sendMessageToChannel(channelID, ...strings) {
     return this.post(`/channels/${channelID}/messages`, {
       text: strings.join("\n")
-    });
+    })
   }
   sendMessageToUser(userID, ...strings) {
     return this.post(`/users/${userID}/messages`, {
       text: strings.join("\n")
-    });
+    })
   }
   sendStamp(envelope, ...stamps) {
-    const { message, messageID } = envelope;
+    const { message, messageID } = envelope
     if ((!message || !message.id) && messageID) {
       throw new Error(
         `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
           envelope
         )}`
-      );
+      )
     }
     return Promise.all(
       stamps.map(async stamp => {
@@ -116,77 +116,77 @@ class Request {
             `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
               stamps
             )}`
-          );
+          )
         }
-        const stampID = await this.stampNameToID(stamp.name);
+        const stampID = await this.stampNameToID(stamp.name)
         if (!stampID) {
           throw new Error(
             `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
               stamps
             )}`
-          );
+          )
         }
         return this.post(
           `/messages/${messageID || message.id}/stamps/${stampID}`,
           {}
-        );
+        )
       })
-    );
+    )
   }
   async stampNameToID(name) {
-    const table = await this.stampIDTablePromise;
-    const stamps = table.filter(v => v.name === name);
+    const table = await this.stampIDTablePromise
+    const stamps = table.filter(v => v.name === name)
     if (stamps.length > 0) {
-      return stamps[0].id;
+      return stamps[0].id
     }
-    return null;
+    return null
   }
 
   replyMessage(envelope, ...strings) {
-    const { user } = envelope;
+    const { user } = envelope
     if (!user) {
       throw new Error(
         `無効な引数が渡されました: hubot-traq/request/replyMessage(): ${JSON.stringify(
           envelope
         )}`
-      );
+      )
     }
-    const userMention = this.createUserString(user);
-    const i = strings.findIndex(s => typeof s === "string");
+    const userMention = this.createUserString(user)
+    const i = strings.findIndex(s => typeof s === "string")
     if (i === -1) {
       throw new Error(
         `無効な引数が渡されました: hubot-traq/request/replyMessage(): ${JSON.stringify(
           strings
         )}`
-      );
+      )
     }
-    strings[i] = `${userMention} ${strings[i]}`;
-    return this.sendMessage(envelope, ...strings);
+    strings[i] = `${userMention} ${strings[i]}`
+    return this.sendMessage(envelope, ...strings)
   }
   createUserString(user) {
     return `!${JSON.stringify({
       type: "user",
       raw: `@${user.name}`,
       id: user.id
-    })}`;
+    })}`
   }
 
   setTopic(envelope, ...strings) {
-    const { room, channelID, userID } = envelope;
+    const { room, channelID, userID } = envelope
     if (room && room.type !== "channel") {
-      throw new Error("envelope.room.typeはchannelではありません");
+      throw new Error("envelope.room.typeはchannelではありません")
     }
     if (!room && !channelID) {
       throw new Error(
         `無効な引数が渡されました: hubot-traq/request/setTopic(): ${JSON.stringify(
           envelope
         )}`
-      );
+      )
     }
 
     return this.put(`/channels/${channelID || room.id}/topic`, {
       text: strings.join("\n")
-    });
+    })
   }
 
   /*
@@ -195,4 +195,4 @@ class Request {
   // emote(envelope, strings...) {}
 }
 
-module.exports = Request;
+module.exports = Request

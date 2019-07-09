@@ -1,16 +1,16 @@
-const { Message } = require("hubot/es2015");
+const { Message } = require("hubot/es2015")
 
 class UserCreated extends Message {
   constructor({ eventTime, user }, done) {
     user.room = {
       type: "none"
-    };
-    super(user, done);
+    }
+    super(user, done)
 
-    this.type = "UserCreated";
-    this.eventTime = eventTime;
-    this.userData = user;
+    this.type = "UserCreated"
+    this.eventTime = eventTime
+    this.userData = user
   }
 }
 
-module.exports = UserCreated;
+module.exports = UserCreated

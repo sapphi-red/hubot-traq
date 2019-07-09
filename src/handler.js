@@ -5,50 +5,50 @@ const {
   ChannelTopicChanged,
   UserCreated,
   StampCreated
-} = require("./events/events");
+} = require("./events/events")
 
-const TOKEN_HEADER = "X-TRAQ-BOT-TOKEN";
-const EVENT_HEADER = "X-TRAQ-BOT-EVENT";
+const TOKEN_HEADER = "X-TRAQ-BOT-TOKEN"
+const EVENT_HEADER = "X-TRAQ-BOT-EVENT"
 
 class TraQEventHandler {
   constructor(token) {
-    this.token = token;
+    this.token = token
   }
 
   parse(req) {
-    const token = req.get(TOKEN_HEADER);
+    const token = req.get(TOKEN_HEADER)
     if (!token || token !== this.token) {
-      throw new Error("受け取ったトークンが不正です");
+      throw new Error("受け取ったトークンが不正です")
     }
 
-    const eventName = req.get(EVENT_HEADER);
+    const eventName = req.get(EVENT_HEADER)
     if (!eventName) {
-      throw new Error("イベント名が存在しません");
+      throw new Error("イベント名が存在しません")
     }
 
     if (!req.is("json")) {
-      throw new Error("不正なJSONです");
+      throw new Error("不正なJSONです")
     }
 
     switch (eventName) {
       case "PING":
       case "JOINED":
       case "LEFT":
-        return null;
+        return null
       case "MESSAGE_CREATED":
-        return this.messageCreated(req.body);
+        return this.messageCreated(req.body)
       case "DIRECT_MESSAGE_CREATED":
-        return this.directMessageCreated(req.body);
+        return this.directMessageCreated(req.body)
       case "CHANNEL_CREATED":
-        return this.channelCreated(req.body);
+        return this.channelCreated(req.body)
       case "CHANNEL_TOPIC_CHANGED":
-        return this.channelTopicChanged(req.body);
+        return this.channelTopicChanged(req.body)
       case "USER_CREATED":
-        return this.userCreated(req.body);
+        return this.userCreated(req.body)
       case "STAMP_CREATED":
-        return this.stampCreated(req.body);
+        return this.stampCreated(req.body)
       default:
-        return null;
+        return null
     }
   }
 
@@ -56,38 +56,38 @@ class TraQEventHandler {
     return {
       type: "messageCreated",
       data: new MessageCreated(data)
-    };
+    }
   }
   directMessageCreated(data) {
     return {
       type: "directMessageCreated",
       data: new DirectMessageCreated(data)
-    };
+    }
   }
   channelCreated(data) {
     return {
       type: "channelCreated",
       data: new ChannelCreated(data)
-    };
+    }
   }
   channelTopicChanged(data) {
     return {
       type: "channelTopicChanged",
       data: new ChannelTopicChanged(data)
-    };
+    }
   }
   userCreated(data) {
     return {
       type: "userCreated",
       data: new UserCreated(data)
-    };
+    }
   }
   stampCreated(data) {
     return {
       type: "stampCreated",
       data: new StampCreated(data)
-    };
+    }
   }
 }
 
-module.exports = TraQEventHandler;
+module.exports = TraQEventHandler
