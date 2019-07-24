@@ -67,26 +67,29 @@ class Request {
       text: strings.join("\n")
     })
   }
-  sendStamp(envelope, ...stamps) {
+  async sendStamp(envelope, ...stamps) {
     const { message, messageID } = envelope
     if ((!message || !message.id) && messageID) {
       throw createArgError("hubot-traq/request/sendStamp()", envelope)
     }
-    return Promise.all(
-      stamps.map(async stamp => {
-        if (!stamp.name) {
-          throw createArgError("hubot-traq/request/sendStamp()", stamps)
-        }
-        const stampID = await this.stampNameToID(stamp.name)
-        if (!stampID) {
-          throw createArgError("hubot-traq/request/sendStamp()", stamps)
-        }
-        return this.api.messagesMessageIDStampsStampIDPost(
+
+    const res = []
+    for (const { stamp } of stamps) {
+      if (!stamp.name) {
+        throw createArgError("hubot-traq/request/sendStamp()", stamps)
+      }
+      const stampID = await this.stampNameToID(stamp.name)
+      if (!stampID) {
+        throw createArgError("hubot-traq/request/sendStamp()", stamps)
+      }
+      res.push(
+        await this.api.messagesMessageIDStampsStampIDPost(
           messageID || message.id,
           stampID
         )
-      })
-    )
+      )
+    }
+    return res
   }
   async stampNameToID(name) {
     const table = await this.stampIDTablePromise

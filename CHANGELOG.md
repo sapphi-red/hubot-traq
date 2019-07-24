@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 変更
+- スタンプの送信を直列に
 
 # [1.2.1][] - 2019-06-21
 ### 追加
