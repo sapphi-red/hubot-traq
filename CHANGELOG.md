@@ -2,6 +2,9 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+
+## [1.3.2][] - 2019-07-24
 ### 変更
 - 依存関係のバージョンアップ
 
@@ -68,7 +71,9 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.2...HEAD
+[1.3.2]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.1...v1.3.2
+[1.3.1]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.2.1...v1.3.0
 [1.2.1]: https://github.com/sapphi-red/hubot-traq/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.1.4...v1.2.0
