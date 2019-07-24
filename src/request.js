@@ -1,50 +1,17 @@
-const request = require("request-promise-native")
-
-const BASE_URL = "https://q.trap.jp/api/1.0"
+const { Apis } = require("traq-api")
 
 class Request {
   constructor(token, robot) {
     this.token = token
     this.robot = robot
 
-    this.stampIDTablePromise = this.get("/stamps")
+    this.api = new Apis({
+      accessToken: this.token
+    })
+
+    this.stampIDTablePromise = this.api.stampsGet()
   }
 
-  get(url) {
-    return request({
-      url,
-      baseUrl: BASE_URL,
-      method: "GET",
-      auth: {
-        bearer: this.token
-      },
-      json: true
-    })
-  }
-  post(url, data) {
-    return request({
-      url,
-      baseUrl: BASE_URL,
-      method: "POST",
-      auth: {
-        bearer: this.token
-      },
-      body: data,
-      json: true
-    })
-  }
-  put(url, data) {
-    return request({
-      url,
-      baseUrl: BASE_URL,
-      method: "PUT",
-      auth: {
-        bearer: this.token
-      },
-      body: data,
-      json: true
-    })
-  }
   sendMessage(envelope, ...strings) {
     const texts = []
     const stamps = []
@@ -91,12 +58,12 @@ class Request {
     )
   }
   sendMessageToChannel(channelID, ...strings) {
-    return this.post(`/channels/${channelID}/messages`, {
+    return this.api.channelsChannelIDMessagesPost(channelID, {
       text: strings.join("\n")
     })
   }
   sendMessageToUser(userID, ...strings) {
-    return this.post(`/users/${userID}/messages`, {
+    return this.api.usersUserIDMessagesPost(userID, {
       text: strings.join("\n")
     })
   }
@@ -126,9 +93,9 @@ class Request {
             )}`
           )
         }
-        return this.post(
-          `/messages/${messageID || message.id}/stamps/${stampID}`,
-          {}
+        return this.api.messagesMessageIDStampsStampIDPost(
+          messageID || message.id,
+          stampID
         )
       })
     )
@@ -172,7 +139,7 @@ class Request {
   }
 
   setTopic(envelope, ...strings) {
-    const { room, channelID, userID } = envelope
+    const { room, channelID } = envelope
     if (room && room.type !== "channel") {
       throw new Error("envelope.room.typeはchannelではありません")
     }
@@ -184,7 +151,7 @@ class Request {
       )
     }
 
-    return this.put(`/channels/${channelID || room.id}/topic`, {
+    return this.api.channelsChannelIDTopicPut(channelID || room.id, {
       text: strings.join("\n")
     })
   }
