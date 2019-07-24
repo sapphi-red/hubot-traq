@@ -1,5 +1,9 @@
 const { Apis } = require("traq-api")
 
+const createArgError = (path, obj) => {
+  return new Error(`無効な引数が渡されました: ${path}: ${JSON.stringify(obj)}`)
+}
+
 class Request {
   constructor(token, robot) {
     this.token = token
@@ -51,11 +55,7 @@ class Request {
       return this.sendMessageToUser(id, ...strings)
     }
 
-    throw new Error(
-      `無効な引数が渡されました: hubot-traq/request/sendTextMessage(): ${JSON.stringify(
-        envelope
-      )}`
-    )
+    throw createArgError("hubot-traq/request/sendTextMessage()", envelope)
   }
   sendMessageToChannel(channelID, ...strings) {
     return this.api.channelsChannelIDMessagesPost(channelID, {
@@ -70,28 +70,16 @@ class Request {
   sendStamp(envelope, ...stamps) {
     const { message, messageID } = envelope
     if ((!message || !message.id) && messageID) {
-      throw new Error(
-        `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
-          envelope
-        )}`
-      )
+      throw createArgError("hubot-traq/request/sendStamp()", envelope)
     }
     return Promise.all(
       stamps.map(async stamp => {
         if (!stamp.name) {
-          throw new Error(
-            `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
-              stamps
-            )}`
-          )
+          throw createArgError("hubot-traq/request/sendStamp()", stamps)
         }
         const stampID = await this.stampNameToID(stamp.name)
         if (!stampID) {
-          throw new Error(
-            `無効な引数が渡されました: hubot-traq/request/sendStamp(): ${JSON.stringify(
-              stamps
-            )}`
-          )
+          throw createArgError("hubot-traq/request/sendStamp()", stamps)
         }
         return this.api.messagesMessageIDStampsStampIDPost(
           messageID || message.id,
@@ -102,30 +90,19 @@ class Request {
   }
   async stampNameToID(name) {
     const table = await this.stampIDTablePromise
-    const stamps = table.filter(v => v.name === name)
-    if (stamps.length > 0) {
-      return stamps[0].id
-    }
-    return null
+    const stamp = table.find(v => v.name === name)
+    return stamp ? stamp.id : null
   }
 
   replyMessage(envelope, ...strings) {
     const { user } = envelope
     if (!user) {
-      throw new Error(
-        `無効な引数が渡されました: hubot-traq/request/replyMessage(): ${JSON.stringify(
-          envelope
-        )}`
-      )
+      throw createArgError("hubot-traq/request/replyMessage()", envelope)
     }
     const userMention = this.createUserString(user)
     const i = strings.findIndex(s => typeof s === "string")
     if (i === -1) {
-      throw new Error(
-        `無効な引数が渡されました: hubot-traq/request/replyMessage(): ${JSON.stringify(
-          strings
-        )}`
-      )
+      throw createArgError("hubot-traq/request/replyMessage()", strings)
     }
     strings[i] = `${userMention} ${strings[i]}`
     return this.sendMessage(envelope, ...strings)
@@ -144,11 +121,7 @@ class Request {
       throw new Error("envelope.room.typeはchannelではありません")
     }
     if (!room && !channelID) {
-      throw new Error(
-        `無効な引数が渡されました: hubot-traq/request/setTopic(): ${JSON.stringify(
-          envelope
-        )}`
-      )
+      throw createArgError("hubot-traq/request/setTopic()", envelope)
     }
 
     return this.api.channelsChannelIDTopicPut(channelID || room.id, {

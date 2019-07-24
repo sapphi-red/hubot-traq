@@ -31,24 +31,24 @@ class TraQEventHandler {
     }
 
     switch (eventName) {
-      case "PING":
-      case "JOINED":
-      case "LEFT":
-        return null
-      case "MESSAGE_CREATED":
-        return this.messageCreated(req.body)
-      case "DIRECT_MESSAGE_CREATED":
-        return this.directMessageCreated(req.body)
-      case "CHANNEL_CREATED":
-        return this.channelCreated(req.body)
-      case "CHANNEL_TOPIC_CHANGED":
-        return this.channelTopicChanged(req.body)
-      case "USER_CREATED":
-        return this.userCreated(req.body)
-      case "STAMP_CREATED":
-        return this.stampCreated(req.body)
-      default:
-        return null
+    case "PING":
+    case "JOINED":
+    case "LEFT":
+      return null
+    case "MESSAGE_CREATED":
+      return this.messageCreated(req.body)
+    case "DIRECT_MESSAGE_CREATED":
+      return this.directMessageCreated(req.body)
+    case "CHANNEL_CREATED":
+      return this.channelCreated(req.body)
+    case "CHANNEL_TOPIC_CHANGED":
+      return this.channelTopicChanged(req.body)
+    case "USER_CREATED":
+      return this.userCreated(req.body)
+    case "STAMP_CREATED":
+      return this.stampCreated(req.body)
+    default:
+      return null
     }
   }
 
