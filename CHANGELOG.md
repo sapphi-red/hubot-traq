@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 変更
+- 依存関係のバージョンアップ
 
 ## [1.3.1][] - 2019-07-24
 ### 修正

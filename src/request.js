@@ -13,7 +13,7 @@ class Request {
       accessToken: this.token
     })
 
-    this.stampIDTablePromise = this.api.stampsGet()
+    this.stampIDTablePromise = this.api.getStamps()
   }
 
   sendMessage(envelope, ...strings) {
@@ -58,12 +58,12 @@ class Request {
     throw createArgError("hubot-traq/request/sendTextMessage()", envelope)
   }
   sendMessageToChannel(channelID, ...strings) {
-    return this.api.channelsChannelIDMessagesPost(channelID, {
+    return this.api.postMessage(channelID, {
       text: strings.join("\n")
     })
   }
   sendMessageToUser(userID, ...strings) {
-    return this.api.usersUserIDMessagesPost(userID, {
+    return this.api.postDirectMessage(userID, {
       text: strings.join("\n")
     })
   }
@@ -83,7 +83,7 @@ class Request {
         throw createArgError("hubot-traq/request/sendStamp()", stamps)
       }
       res.push(
-        await this.api.messagesMessageIDStampsStampIDPost(
+        await this.api.stampMessage(
           messageID || message.id,
           stampID
         )
@@ -127,7 +127,7 @@ class Request {
       throw createArgError("hubot-traq/request/setTopic()", envelope)
     }
 
-    return this.api.channelsChannelIDTopicPut(channelID || room.id, {
+    return this.api.changeChannelTopic(channelID || room.id, {
       text: strings.join("\n")
     })
   }
