@@ -74,7 +74,7 @@ class Request {
     }
 
     const res = []
-    for (const { stamp } of stamps) {
+    for (const stamp of stamps) {
       if (!stamp.name) {
         throw createArgError("hubot-traq/request/sendStamp()", stamps)
       }
