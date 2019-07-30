@@ -13,7 +13,9 @@ class Request {
       accessToken: this.token
     })
 
-    this.stampIDTablePromise = this.api.getStamps()
+    this.stampIDTablePromise = new Promise(async resolve => {
+      resolve((await this.api.getStamps()).data)
+    })
   }
 
   sendMessage(envelope, ...strings) {
