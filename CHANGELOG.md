@@ -3,7 +3,7 @@
 
 ## [Unreleased]
 
-## [1.3.5][] - 2019-10-10
+## [1.4.0][] - 2019-10-10
 ### 追加
 - メンション・チャンネルリンクの自動埋め込み機能
 
@@ -86,8 +86,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.5...HEAD
-[1.3.5]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.4...v1.3.5
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.4...v1.4.0
 [1.3.4]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.3...v1.3.4
 [1.3.3]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.1...v1.3.2
