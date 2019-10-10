@@ -4,6 +4,7 @@ const NAME_ENV_NAME = "HUBOT_TRAQ_NAME"
 const VERIFY_TOKEN_ENV_NAME = "HUBOT_TRAQ_VERIFY_TOKEN"
 const ACCESS_TOKEN_ENV_NAME = "HUBOT_TRAQ_ACCESS_TOKEN"
 const PATH_ENV_NAME = "HUBOT_TRAQ_PATH"
+const EMBED_ENV_NAME = "HUBOT_TRAQ_EMBED"
 
 const getEnvs = () => {
   const name = process.env[NAME_ENV_NAME]
@@ -27,7 +28,9 @@ const getEnvs = () => {
     path = "/"
   }
 
-  return { verifyToken, accessToken, path }
+  const embed = process.env[EMBED_ENV_NAME] === "TRUE"
+
+  return { verifyToken, accessToken, path, embed }
 }
 
 exports.use = robot => {

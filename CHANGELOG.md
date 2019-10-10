@@ -4,8 +4,12 @@
 ## [Unreleased]
 
 ## [1.3.5][] - 2019-10-10
+### 追加
+- メンション・チャンネルリンクの自動埋め込み機能
+
 ### 変更
 - `node-traq`を2.7.2-1から2.7.7-0にアップデート
+- スタンプを複数個同時に送れるように
 
 ## [1.3.4][] - 2019-07-30
 ### 修正
@@ -82,7 +86,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.4...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.5...HEAD
+[1.3.5]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.4...v1.3.5
 [1.3.4]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.3...v1.3.4
 [1.3.3]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.1...v1.3.2

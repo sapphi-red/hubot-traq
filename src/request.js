@@ -5,9 +5,10 @@ const createArgError = (path, obj) => {
 }
 
 class Request {
-  constructor(token, robot) {
+  constructor(token, robot, embed) {
     this.token = token
     this.robot = robot
+    this.embed = embed
 
     this.api = new Apis({
       accessToken: this.token
@@ -60,14 +61,22 @@ class Request {
     throw createArgError("hubot-traq/request/sendTextMessage()", envelope)
   }
   sendMessageToChannel(channelID, ...strings) {
-    return this.api.postMessage(channelID, {
-      text: strings.join("\n")
-    })
+    return this.api.postMessage(
+      channelID,
+      {
+        text: strings.join("\n")
+      },
+      this.embed ? 1 : void 0
+    )
   }
   sendMessageToUser(userID, ...strings) {
-    return this.api.postDirectMessage(userID, {
-      text: strings.join("\n")
-    })
+    return this.api.postDirectMessage(
+      userID,
+      {
+        text: strings.join("\n")
+      },
+      this.embed ? 1 : void 0
+    )
   }
   async sendStamp(envelope, ...stamps) {
     const { message, messageID } = envelope
@@ -88,9 +97,11 @@ class Request {
         await this.api.stampMessage(
           messageID || message.id,
           stampID,
-          stamp.count ? {
-            count: stamp.count
-          } : void 0
+          stamp.count
+            ? {
+              count: stamp.count
+            }
+            : void 0
         )
       )
     }
