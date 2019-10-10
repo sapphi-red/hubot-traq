@@ -87,7 +87,10 @@ class Request {
       res.push(
         await this.api.stampMessage(
           messageID || message.id,
-          stampID
+          stampID,
+          stamp.count ? {
+            count: stamp.count
+          } : void 0
         )
       )
     }
