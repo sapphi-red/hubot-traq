@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+## [1.4.1][] - 2019-10-10
 ### 修正
 - スタンプが送信できないバグの修正
 
@@ -88,7 +90,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.1...HEAD
+[1.4.1]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.4...v1.4.0
 [1.3.4]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.3...v1.3.4
 [1.3.3]: https://github.com/sapphi-red/hubot-traq/compare/v1.3.2...v1.3.3
