@@ -94,15 +94,9 @@ class Request {
         throw createArgError("hubot-traq/request/sendStamp()", stamps)
       }
       res.push(
-        await this.api.stampMessage(
-          messageID || message.id,
-          stampID,
-          stamp.count
-            ? {
-              count: stamp.count
-            }
-            : void 0
-        )
+        await this.api.stampMessage(messageID || message.id, stampID, {
+          count: stamp.count !== void 0 ? stamp.count : 1
+        })
       )
     }
     return res
