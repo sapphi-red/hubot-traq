@@ -1,0 +1,23 @@
+name: automatic deploy
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  release:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: setup Node
+        uses: dcodeIO/setup-node-nvm@23906d31b87a1bd9c40bf289219a57e40c4082d8
+        with:
+          node-version: node
+          registry-url: 'https://registry.npmjs.org'
+      - name: ci
+        run: npm ci
+      - name: deploy
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
