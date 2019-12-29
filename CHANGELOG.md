@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+## [1.4.3][] - 2019-12-29
 ### 変更
 - 環境変数周りのログの出力の改善
 
