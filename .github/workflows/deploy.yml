@@ -11,9 +11,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v1
       - name: setup Node
-        uses: dcodeIO/setup-node-nvm@23906d31b87a1bd9c40bf289219a57e40c4082d8
+        uses: actions/setup-node@v1
         with:
-          node-version: node
+          node-version: '13.x'
           registry-url: 'https://registry.npmjs.org'
       - name: ci
         run: npm ci
