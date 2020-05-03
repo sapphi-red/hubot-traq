@@ -64,7 +64,7 @@ class Request {
     return this.api.postMessage(
       channelID,
       {
-        text: strings.join("\n"),
+        content: strings.join("\n"),
         embed: this.embed ? 1: void 0
       }
     )
@@ -73,7 +73,7 @@ class Request {
     return this.api.postDirectMessage(
       userID,
       {
-        text: strings.join("\n"),
+        content: strings.join("\n"),
         embed: this.embed ? 1: void 0
       }
     )
@@ -138,7 +138,7 @@ class Request {
     }
 
     return this.api.editChannelTopic(channelID || room.id, {
-      text: strings.join("\n")
+      topic: strings.join("\n")
     })
   }
 
