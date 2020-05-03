@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+## [1.4.4][] - 2019-05-03
 ### 変更
 - `node-traq`を2.8.1-3から3.0.0-29にアップデート
   - これによりtraQ v3 APIに移行しました
@@ -101,7 +103,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.3...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.4...HEAD
+[1.4.4]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.3...v1.4.4
 [1.4.3]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.0...v1.4.1
