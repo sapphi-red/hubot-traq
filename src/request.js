@@ -11,11 +11,7 @@ class Request {
     this.embed = embed
 
     this.api = new Apis({
-      baseOptions: {
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        }
-      }
+      accessToken: this.token
     })
 
     this.stampIDTablePromise = new Promise(async resolve => {

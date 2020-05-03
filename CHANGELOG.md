@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 変更
+- `node-traq`を3.0.0-29から3.0.1-0にアップデート
 
 ## [1.4.6][] - 2019-05-03
 ### 修正
