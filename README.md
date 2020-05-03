@@ -1,5 +1,5 @@
 # hubot-traq
-[![NPM](https://nodei.co/npm/hubot-traq.png)](https://nodei.co/npm/hubot-traq/) [![Build Status](https://travis-ci.org/sapphi-red/hubot-traq.svg)](https://travis-ci.org/sapphi-red/hubot-traq) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)  
+[![npm version](https://badge.fury.io/js/hubot-traq.svg)](https://badge.fury.io/js/hubot-traq) [![Build Status](https://travis-ci.org/sapphi-red/hubot-traq.svg)](https://travis-ci.org/sapphi-red/hubot-traq) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)  
 
 [traQ][]用[Hubot][]アダプター
 
