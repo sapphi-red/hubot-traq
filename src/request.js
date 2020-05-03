@@ -1,4 +1,4 @@
-const { Apis } = require("traq-api")
+const { Apis } = require("@traptitech/traq")
 
 const createArgError = (path, obj) => {
   return new Error(`無効な引数が渡されました: ${path}: ${JSON.stringify(obj)}`)
@@ -64,18 +64,18 @@ class Request {
     return this.api.postMessage(
       channelID,
       {
-        text: strings.join("\n")
-      },
-      this.embed ? 1 : void 0
+        text: strings.join("\n"),
+        embed: this.embed ? 1: void 0
+      }
     )
   }
   sendMessageToUser(userID, ...strings) {
     return this.api.postDirectMessage(
       userID,
       {
-        text: strings.join("\n")
-      },
-      this.embed ? 1 : void 0
+        text: strings.join("\n"),
+        embed: this.embed ? 1: void 0
+      }
     )
   }
   async sendStamp(envelope, ...stamps) {
@@ -94,7 +94,7 @@ class Request {
         throw createArgError("hubot-traq/request/sendStamp()", stamps)
       }
       res.push(
-        await this.api.stampMessage(messageID || message.id, stampID, {
+        await this.api.addMessageStamp(messageID || message.id, stampID, {
           count: stamp.count !== void 0 ? stamp.count : 1
         })
       )
@@ -137,7 +137,7 @@ class Request {
       throw createArgError("hubot-traq/request/setTopic()", envelope)
     }
 
-    return this.api.changeChannelTopic(channelID || room.id, {
+    return this.api.editChannelTopic(channelID || room.id, {
       text: strings.join("\n")
     })
   }

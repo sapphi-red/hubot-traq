@@ -2,6 +2,9 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 変更
+- `node-traq`を2.8.1-3から3.0.0-29にアップデート
+  - これによりtraQ v3 APIに移行しました
 
 ## [1.4.3][] - 2019-12-29
 ### 変更
