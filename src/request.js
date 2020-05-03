@@ -11,7 +11,11 @@ class Request {
     this.embed = embed
 
     this.api = new Apis({
-      accessToken: this.token
+      baseOptions: {
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      }
     })
 
     this.stampIDTablePromise = new Promise(async resolve => {
@@ -19,7 +23,7 @@ class Request {
     })
   }
 
-  sendMessage(envelope, ...strings) {
+  async sendMessage(envelope, ...strings) {
     const texts = []
     const stamps = []
     for (const string of strings) {
@@ -39,7 +43,11 @@ class Request {
     if (stamps.length > 0) {
       promises.push(this.sendStamp(envelope, ...stamps))
     }
-    return Promise.all(promises)
+    try {
+    await Promise.all(promises)
+    } catch (e) {
+      console.error(`[hubot-traq] Error: ${e}`)
+    }
   }
   sendTextMessage(envelope, ...strings) {
     const { room, channelID, userID } = envelope
@@ -65,7 +73,7 @@ class Request {
       channelID,
       {
         content: strings.join("\n"),
-        embed: this.embed ? 1: void 0
+        embed: this.embed
       }
     )
   }
@@ -74,7 +82,7 @@ class Request {
       userID,
       {
         content: strings.join("\n"),
-        embed: this.embed ? 1: void 0
+        embed: this.embed
       }
     )
   }
