@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+## [1.5.0][] - 2019-05-10
 ### 追加
 - タグの追加/削除イベントに対応(`TAG_ADDED`/`TAG_REMOVED`)
 - チャンネル参加/退出イベントに対応(`JOIN`/`LEFT`)
@@ -119,7 +121,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.7...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.7...v1.5.0
 [1.4.7]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.6...v1.4.7
 [1.4.6]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.5...v1.4.6
 [1.4.5]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.4...v1.4.5
