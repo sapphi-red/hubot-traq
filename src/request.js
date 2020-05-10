@@ -40,7 +40,7 @@ class Request {
       promises.push(this.sendStamp(envelope, ...stamps))
     }
     try {
-    await Promise.all(promises)
+      await Promise.all(promises)
     } catch (e) {
       console.error(`[hubot-traq] Error: ${e}`)
     }
