@@ -1,19 +1,9 @@
 const { Message } = require("hubot/es2015")
+const { createNullUser } = require("../nullUser")
 
 class TagRemoved extends Message {
   constructor({ eventTime, tagId, tag }, done) {
-    const user = {
-      id: "00000000-0000-0000-0000-000000000000",
-      name: "",
-      displayName: "",
-      iconFileId: "00000000-0000-0000-0000-000000000000",
-      bot: false,
-      state: 0,
-      updatedAt: new Date(),
-      room: {
-        type: "none"
-      }
-    }
+    const user = createNullUser()
     super(user, done)
 
     this.type = "TagRemoved"

@@ -1,3 +1,5 @@
+const Joined = require("./Joined")
+const Left = require("./Left")
 const MessageCreated = require("./MessageCreated")
 const DirectMessageCreated = require("./DirectMessageCreated")
 const ChannelCreated = require("./ChannelCreated")
@@ -8,6 +10,8 @@ const TagAdded = require("./TagAdded")
 const TagRemoved = require("./TagRemoved")
 
 module.exports = {
+  Joined,
+  Left,
   MessageCreated,
   DirectMessageCreated,
   ChannelCreated,

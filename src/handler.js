@@ -1,4 +1,6 @@
 const {
+  Joined,
+  Left,
   MessageCreated,
   DirectMessageCreated,
   ChannelCreated,
@@ -34,9 +36,11 @@ class TraQEventHandler {
 
     switch (eventName) {
     case "PING":
-    case "JOINED":
-    case "LEFT":
       return null
+    case "JOINED":
+      return this.joined(req.body)
+    case "LEFT":
+      return this.left(req.body)
     case "MESSAGE_CREATED":
       return this.messageCreated(req.body)
     case "DIRECT_MESSAGE_CREATED":
@@ -58,6 +62,18 @@ class TraQEventHandler {
     }
   }
 
+  joined(data) {
+    return {
+      type: "joined",
+      data: new Joined(data)
+    }
+  }
+  left(data) {
+    return {
+      type: "left",
+      data: new Left(data)
+    }
+  }
   messageCreated(data) {
     return {
       type: "messageCreated",
