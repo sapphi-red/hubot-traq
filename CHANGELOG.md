@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 変更
+- `node-traq`を3.0.1-0から3.1.1-0にアップデート
 ### 修正
 - ダミーユーザーのcreatedAtの型がstringではなくDateになっていたのを修正
 
