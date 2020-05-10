@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 修正
+- ダミーユーザーのcreatedAtの型がstringではなくDateになっていたのを修正
 
 ## [1.5.0][] - 2019-05-10
 ### 追加
