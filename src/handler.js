@@ -4,7 +4,9 @@ const {
   ChannelCreated,
   ChannelTopicChanged,
   UserCreated,
-  StampCreated
+  StampCreated,
+  TagAdded,
+  TagRemoved
 } = require("./events/events")
 
 const TOKEN_HEADER = "X-TRAQ-BOT-TOKEN"
@@ -47,6 +49,10 @@ class TraQEventHandler {
       return this.userCreated(req.body)
     case "STAMP_CREATED":
       return this.stampCreated(req.body)
+    case "TAG_ADDED":
+      return this.tagAdded(req.body)
+    case "TAG_REMOVED":
+      return this.tagRemoved(req.body)
     default:
       return null
     }
@@ -86,6 +92,18 @@ class TraQEventHandler {
     return {
       type: "stampCreated",
       data: new StampCreated(data)
+    }
+  }
+  tagAdded(data) {
+    return {
+      type: "tagAdded",
+      data: new TagAdded(data)
+    }
+  }
+  tagRemoved(data) {
+    return {
+      type: "tagRemoved",
+      data: new TagRemoved(data)
     }
   }
 }

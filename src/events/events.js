@@ -4,6 +4,8 @@ const ChannelCreated = require("./ChannelCreated")
 const ChannelTopicChanged = require("./ChannelTopicChanged")
 const UserCreated = require("./UserCreated")
 const StampCreated = require("./StampCreated")
+const TagAdded = require("./TagAdded")
+const TagRemoved = require("./TagRemoved")
 
 module.exports = {
   MessageCreated,
@@ -11,5 +13,7 @@ module.exports = {
   ChannelCreated,
   ChannelTopicChanged,
   UserCreated,
-  StampCreated
+  StampCreated,
+  TagAdded,
+  TagRemoved
 }

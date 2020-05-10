@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 追加
+- タグの追加/削除イベントに対応(`TAG_ADDED`/`TAG_REMOVED`)
 
 ## [1.4.7][] - 2019-05-03
 ### 変更
