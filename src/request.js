@@ -125,6 +125,9 @@ class Request {
     return this.sendMessage(envelope, ...strings)
   }
   createUserString(user) {
+    if (this.embed) {
+      return `@${user.name}`
+    }
     return `!${JSON.stringify({
       type: "user",
       raw: `@${user.name}`,
