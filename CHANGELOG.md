@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+## [1.5.3][] - 2020-07-02
 ### 変更
 - `node-traq`を3.1.1-0から3.2.1-3にアップデート
 - トピック変更イベントをTopicMessageからMessageに(`robot.hear`で流れてこないように)
@@ -134,7 +136,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.2...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.3...HEAD
+[1.5.3]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.2...v1.5.3
 [1.5.2]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.7...v1.5.0
