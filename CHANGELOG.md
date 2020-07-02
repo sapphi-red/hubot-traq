@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+## [1.5.2][] - 2020-07-02
 ### 修正
 - メンション・チャンネルリンクの自動埋め込み機能が有効な際に`res.reply`のメンションがおかしくなっていたのを修正
 
@@ -129,7 +131,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.1...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.2...HEAD
+[1.5.2]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.7...v1.5.0
 [1.4.7]: https://github.com/sapphi-red/hubot-traq/compare/v1.4.6...v1.4.7
