@@ -2,10 +2,13 @@ const { Message } = require("hubot/es2015")
 
 class UserCreated extends Message {
   constructor({ eventTime, user }, done) {
-    user.room = {
-      type: "none"
+    const u = {
+      ...user,
+      room: {
+        type: "none"
+      }
     }
-    super(user, done)
+    super(u, done)
 
     this.type = "UserCreated"
     this.eventTime = eventTime

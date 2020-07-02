@@ -2,10 +2,12 @@ const { TextMessage } = require("hubot/es2015")
 
 class MessageCreated extends TextMessage {
   constructor({ eventTime, message }) {
-    const u = Object.assign({}, message.user)
-    u.room = {
-      type: "channel",
-      id: message.channelId
+    const u = {
+      ...message.user,
+      room: {
+        type: "channel",
+        id: message.channelId
+      }
     }
     super(u, message.plainText, message.id)
 

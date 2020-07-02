@@ -2,9 +2,11 @@ const { Message } = require("hubot/es2015")
 
 class StampCreated extends Message {
   constructor({ eventTime, id, name, fileId, creator }, done) {
-    const user = Object.assign({}, creator)
-    user.room = {
-      type: "none"
+    const user = {
+      ...creator,
+      room: {
+        type: "none"
+      }
     }
     super(user, done)
 
