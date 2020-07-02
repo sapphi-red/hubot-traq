@@ -1,16 +1,14 @@
 const { TopicMessage } = require("hubot/es2015")
 
-class ChannelTopicChanged extends TopicMessage {
-  constructor({ eventTime, channel, topic, updater }) {
+class ChannelTopicChanged extends Message {
+  constructor({ eventTime, channel, topic, updater }, done) {
     const u = Object.assign({}, updater)
     u.room = {
       type: "channel",
       id: channel.id,
       data: channel
     }
-    const text = topic
-    const id = null
-    super(u, text, id)
+    super(u, done)
 
     this.eventTime = eventTime
     this.channel = channel
