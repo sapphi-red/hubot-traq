@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 修正
+- 動作しないバグの修正
 
 ## [1.5.3][] - 2020-07-02
 ### 変更

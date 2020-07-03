@@ -1,4 +1,4 @@
-const { TopicMessage } = require("hubot/es2015")
+const { Message } = require("hubot/es2015")
 
 class ChannelTopicChanged extends Message {
   constructor({ eventTime, channel, topic, updater }, done) {
