@@ -8,6 +8,7 @@ const UserCreated = require("./UserCreated")
 const StampCreated = require("./StampCreated")
 const TagAdded = require("./TagAdded")
 const TagRemoved = require("./TagRemoved")
+const BotMessageStampsUpdated = require("./BotMessageStampsUpdated")
 
 module.exports = {
   Joined,
@@ -19,5 +20,6 @@ module.exports = {
   UserCreated,
   StampCreated,
   TagAdded,
-  TagRemoved
+  TagRemoved,
+  BotMessageStampsUpdated
 }

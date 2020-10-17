@@ -8,7 +8,8 @@ const {
   UserCreated,
   StampCreated,
   TagAdded,
-  TagRemoved
+  TagRemoved,
+  BotMessageStampsUpdated
 } = require("./events/events")
 
 const TOKEN_HEADER = "X-TRAQ-BOT-TOKEN"
@@ -57,6 +58,8 @@ class TraQEventHandler {
       return this.tagAdded(req.body)
     case "TAG_REMOVED":
       return this.tagRemoved(req.body)
+    case "BOT_MESSAGE_STAMPS_UPDATED":
+      return this.botMessageStampsUpdated(req.body)
     default:
       return null
     }
@@ -120,6 +123,12 @@ class TraQEventHandler {
     return {
       type: "tagRemoved",
       data: new TagRemoved(data)
+    }
+  }
+  botMessageStampsUpdated(data) {
+    return {
+      type: "botMessageStampsUpdated",
+      data: new BotMessageStampsUpdated(data)
     }
   }
 }

@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 追加
+- スタンプ変化イベントに対応(`BOT_MESSAGE_STAMPS_UPDATED`)
 ### 変更
 - `node-traq`を3.2.1-3から3.4.6-4にアップデート
 
