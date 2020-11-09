@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 修正
+- スタンプ変化イベントのスタンプ名のフィールド名を`name`から`stampName`に修正
 
 ## [1.7.1][] - 2020-11-09
 ### 修正
