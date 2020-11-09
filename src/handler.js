@@ -128,7 +128,7 @@ class TraQEventHandler {
   }
   botMessageStampsUpdated(data) {
     data.stamps.forEach(v => {
-      v.name = this.request.stampIDToName(v.id)
+      v.name = this.request.stampIDToName(v.stampId)
     })
 
     return {
