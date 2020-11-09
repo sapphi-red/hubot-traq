@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 修正
+- `HUBOT_TRAQ_EMBED`未定義時に動作しないバグの修正
 
 ## [1.7.0][] - 2020-11-09
 ### 追加
