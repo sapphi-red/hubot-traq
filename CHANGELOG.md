@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+## [1.7.0][] - 2020-11-09
 ### 追加
 - スタンプ変化イベントでスタンプ名を参照可能に
 ### 変更
@@ -151,7 +153,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.4...v1.6.0
 [1.5.4]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.3...v1.5.4
 [1.5.3]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.2...v1.5.3
