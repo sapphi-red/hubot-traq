@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+## [1.7.1][] - 2020-11-09
 ### 修正
 - `HUBOT_TRAQ_EMBED`未定義時に動作しないバグの修正
 - スタンプ変化イベントのスタンプ名が正しくなかった
@@ -156,7 +158,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.7.0...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.7.1...HEAD
+[1.7.1]: https://github.com/sapphi-red/hubot-traq/compare/v1.7.0...v1.7.1
 [1.7.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.4...v1.6.0
 [1.5.4]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.3...v1.5.4
