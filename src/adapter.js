@@ -10,7 +10,7 @@ class TraQAdapter extends Adapter {
     this.path = path
 
     this.request = new Request(accessToken, robot, embed)
-    this.handler = new Handler(verifyToken)
+    this.handler = new Handler(verifyToken, this.request)
 
     this.robot.logger.info("Constructor")
   }

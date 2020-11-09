@@ -16,8 +16,9 @@ const TOKEN_HEADER = "X-TRAQ-BOT-TOKEN"
 const EVENT_HEADER = "X-TRAQ-BOT-EVENT"
 
 class TraQEventHandler {
-  constructor(token) {
+  constructor(token, request) {
     this.token = token
+    this.request = request
   }
 
   parse(req) {
@@ -126,6 +127,10 @@ class TraQEventHandler {
     }
   }
   botMessageStampsUpdated(data) {
+    data.stamps.forEach(v => {
+      v.name = this.request.stampIDToName(v.id)
+    })
+
     return {
       type: "botMessageStampsUpdated",
       data: new BotMessageStampsUpdated(data)

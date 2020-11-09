@@ -14,8 +14,14 @@ class Request {
       accessToken: this.token
     })
 
-    this.stampIDTablePromise = new Promise(async resolve => {
-      resolve((await this.api.getStamps()).data)
+    /*
+      本来ならpromiseを変数に持つべきだが、
+      hubotが同期関数しか許さない箇所があるので、
+      仕方なく実体を代入する
+    */
+    this.stampIDTable = []
+    this.api.getStamps().then(({ data }) => {
+      this.stampIDTable = data
     })
   }
 
@@ -93,7 +99,7 @@ class Request {
       if (!stamp.name) {
         throw createArgError("hubot-traq/request/sendStamp()", stamps)
       }
-      const stampID = await this.stampNameToID(stamp.name)
+      const stampID = this.stampNameToID(stamp.name)
       if (!stampID) {
         throw createArgError("hubot-traq/request/sendStamp()", stamps)
       }
@@ -105,10 +111,14 @@ class Request {
     }
     return res
   }
-  async stampNameToID(name) {
-    const table = await this.stampIDTablePromise
-    const stamp = table.find(v => v.name === name)
+
+  stampNameToID(name) {
+    const stamp = this.stampIDTable.find(v => v.name === name)
     return stamp ? stamp.id : null
+  }
+  stampIDToName(id) {
+    const stamp = this.stampIDTable.find(v => v.id === id)
+    return stamp ? stamp.name : null
   }
 
   replyMessage(envelope, ...strings) {

@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 追加
+- スタンプ変化イベントでスタンプ名を参照可能に
 ### 変更
 - `HUBOT_TRAQ_EMBED`を小文字でも有効に (`true`や`True`でも`TRUE`として扱われます)
 
