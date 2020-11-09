@@ -2,6 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+
+## [1.7.2][] - 2020-11-09
 ### 修正
 - スタンプ変化イベントのスタンプ名のフィールド名を`name`から`stampName`に修正
 
@@ -160,7 +162,8 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.7.1...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.7.2...HEAD
+[1.7.2]: https://github.com/sapphi-red/hubot-traq/compare/v1.7.1...v1.7.2
 [1.7.1]: https://github.com/sapphi-red/hubot-traq/compare/v1.7.0...v1.7.1
 [1.7.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.5.4...v1.6.0
