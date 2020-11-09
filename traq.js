@@ -33,7 +33,7 @@ const getEnvs = () => {
     console.info(`環境変数${PATH_ENV_NAME}の存在を確認`)
   }
 
-  const embed = process.env[EMBED_ENV_NAME] === "TRUE"
+  const embed = process.env[EMBED_ENV_NAME].toUpperCase() === "TRUE"
   console.info(`メンション・チャンネルリンクの自動埋め込みは${embed ? "有効" : "無効"}`)
 
   return { verifyToken, accessToken, path, embed }

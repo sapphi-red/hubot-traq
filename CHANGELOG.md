@@ -2,7 +2,8 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
-
+### 変更
+- `HUBOT_TRAQ_EMBED`を小文字でも有効に (`true`や`True`でも`TRUE`として扱われます)
 
 ## [1.6.0][] - 2020-10-17
 ### 追加
