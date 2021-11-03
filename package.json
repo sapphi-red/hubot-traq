@@ -1,6 +1,6 @@
 {
   "name": "hubot-traq",
-  "version": "1.8.0-alpha.4",
+  "version": "1.8.0",
   "description": "Hubot adapter for traQ.",
   "main": "./traq",
   "scripts": {
