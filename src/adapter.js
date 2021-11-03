@@ -46,7 +46,7 @@ class TraQAdapter extends Adapter {
       })
 
     } else if (this.mode === 'WEBSOCKET') {
-      const ws = new ReconnectingWebSocket(TRAQ_BOT_WS_URL, { WebSocket: WS })
+      const ws = new ReconnectingWebSocket(TRAQ_BOT_WS_URL, [], { WebSocket: WS })
       ws.addEventListener('message', eve => {
         try {
           const data = JSON.parse(eve.data)
