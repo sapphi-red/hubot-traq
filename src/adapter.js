@@ -4,17 +4,16 @@ const WS = require('ws')
 const Request = require("./request")
 const Handler = require("./handler")
 
-const TRAQ_BOT_WS_URL = 'wss://q.trap.jp/api/v3/bots/ws'
-
 class TraQAdapter extends Adapter {
-  constructor(robot, { mode, verifyToken, accessToken, path, embed = false }) {
+  constructor(robot, { mode, verifyToken, accessToken, path, embed = false, domain }) {
     super(robot)
     this.robot = robot
 
     this.mode = mode
     this.path = path
+    this.domain = domain
 
-    this.request = new Request(accessToken, robot, embed)
+    this.request = new Request(accessToken, robot, domain, embed)
     this.handler = new Handler(verifyToken, this.request)
 
     this.robot.logger.info("Constructor")
@@ -46,7 +45,11 @@ class TraQAdapter extends Adapter {
       })
 
     } else if (this.mode === 'WEBSOCKET') {
-      const ws = new ReconnectingWebSocket(TRAQ_BOT_WS_URL, [], { WebSocket: WS })
+      const ws = new ReconnectingWebSocket(
+        `wss://${this.domain}/api/v3/bots/ws`,
+        [],
+        { WebSocket: WS }
+      )
       ws.addEventListener('message', eve => {
         try {
           const data = JSON.parse(eve.data)

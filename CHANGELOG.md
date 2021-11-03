@@ -5,6 +5,7 @@
 ### 追加
 - WebSocketモードへの対応
   - `HUBOT_TRAQ_MODE`が追加されました
+- `HUBOT_TRAQ_DOMAIN`で接続先のドメインを変更できるように
 
 ### 変更
 - `node-traq`を3.5.0-2から3.8.2-2にアップデート

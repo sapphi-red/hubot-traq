@@ -6,6 +6,7 @@ const VERIFY_TOKEN_ENV_NAME = "HUBOT_TRAQ_VERIFY_TOKEN"
 const ACCESS_TOKEN_ENV_NAME = "HUBOT_TRAQ_ACCESS_TOKEN"
 const PATH_ENV_NAME = "HUBOT_TRAQ_PATH"
 const EMBED_ENV_NAME = "HUBOT_TRAQ_EMBED"
+const DOMAIN_ENV_NAME = "HUBOT_TRAQ_DOMAIN"
 
 const getEnvs = () => {
   const name = process.env[NAME_ENV_NAME]
@@ -35,6 +36,13 @@ const getEnvs = () => {
   const embed = process.env[EMBED_ENV_NAME] && process.env[EMBED_ENV_NAME].toUpperCase() === "TRUE"
   console.info(`メンション・チャンネルリンクの自動埋め込みは${embed ? "有効" : "無効"}`)
 
+  let domain = process.env[DOMAIN_ENV_NAME]
+  if (typeof domain === "undefined") {
+    domain = 'q.trap.jp'
+  } else {
+    console.info(`環境変数${DOMAIN_ENV_NAME}の存在を確認`)
+  }
+
   const verifyToken = process.env[VERIFY_TOKEN_ENV_NAME]
   let path = process.env[PATH_ENV_NAME]
   if (mode === 'HTTP') {
@@ -51,7 +59,7 @@ const getEnvs = () => {
     }
   }
 
-  return { mode, accessToken, embed, verifyToken, path }
+  return { mode, accessToken, embed, verifyToken, path, domain }
 }
 
 exports.use = robot => {

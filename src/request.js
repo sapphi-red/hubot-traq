@@ -5,12 +5,13 @@ const createArgError = (path, obj) => {
 }
 
 class Request {
-  constructor(token, robot, embed) {
+  constructor(token, robot, domain, embed) {
     this.token = token
     this.robot = robot
     this.embed = embed
 
     this.api = new Apis({
+      basePath: `https://${domain}/api/v3`,
       accessToken: this.token
     })
 
