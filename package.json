@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "@traptitech/traq": "^3.8.2-2",
-    "reconnecting-websocket": "^4.4.0"
+    "reconnecting-websocket": "^4.4.0",
+    "ws": "^8.2.3"
   },
   "peerDependencies": {
     "hubot": ">=3.0"

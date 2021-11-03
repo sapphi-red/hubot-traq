@@ -1,5 +1,6 @@
 const { Adapter } = require("hubot/es2015")
 const ReconnectingWebSocket = require('reconnecting-websocket')
+const WS = require('ws')
 const Request = require("./request")
 const Handler = require("./handler")
 
@@ -45,7 +46,7 @@ class TraQAdapter extends Adapter {
       })
 
     } else if (this.mode === 'WEBSOCKET') {
-      const ws = new ReconnectingWebSocket(TRAQ_BOT_WS_URL)
+      const ws = new ReconnectingWebSocket(TRAQ_BOT_WS_URL, { WebSocket: WS })
       ws.addEventListener('message', eve => {
         try {
           const data = JSON.parse(eve.data)
