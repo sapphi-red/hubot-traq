@@ -1,6 +1,6 @@
 const { Adapter } = require("hubot/es2015")
 const ReconnectingWebSocket = require('reconnecting-websocket')
-const WS = require('ws')
+const { createWebSocketWithHeader } = require('./WebSocketWithHeader')
 const Request = require("./request")
 const Handler = require("./handler")
 
@@ -11,6 +11,7 @@ class TraQAdapter extends Adapter {
 
     this.mode = mode
     this.path = path
+    this.accessToken = accessToken
     this.domain = domain
 
     this.request = new Request(accessToken, robot, domain, embed)
@@ -45,10 +46,13 @@ class TraQAdapter extends Adapter {
       })
 
     } else if (this.mode === 'WEBSOCKET') {
+      const WebSocketWithAuth = createWebSocketWithHeader({
+        Authorization: `Bearer ${this.accessToken}`
+      })
       const ws = new ReconnectingWebSocket(
         `wss://${this.domain}/api/v3/bots/ws`,
         [],
-        { WebSocket: WS }
+        { WebSocket: WebSocketWithAuth }
       )
       ws.addEventListener('message', eve => {
         try {
