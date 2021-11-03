@@ -41,6 +41,7 @@ git commit -m "Init"
 - `HUBOT_TRAQ_ACCESS_TOKEN` - traQで動かすHubotのAccess Token
 - `HUBOT_TRAQ_PATH` - Botサーバーエンドポイントのパス(直下で受け取るなら`""`、`/webhook/`で受け取るなら`"/webhook/"`)
 - `HUBOT_TRAQ_EMBED` - メンション・チャンネルリンクの自動埋め込みの有無(`TRUE`にすると有効、省略時は無効)
+- `PORT`または`EXPRESS_PORT` - [HTTPモードでのポート](https://github.com/hubotio/hubot/blob/master/docs/scripting.md#http-listener) (省略時は`8080`)
 
 Verification CodeなどはそれぞれtraQのBot Consoleから確認できます
 
