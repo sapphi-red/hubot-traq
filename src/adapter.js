@@ -72,6 +72,11 @@ class TraQAdapter extends Adapter {
       })
 
       this.robot.on('send-rtcstate', eve => {
+        if (eve === null) {
+          ws.send(`rtcstate:null`)
+          return
+        }
+
         const statesText = Object.entries(eve.states).map(([sessionId, state]) => `${state}:${sessionId}`).join(':')
         const commandText = `rtcstate:${eve.channelId}:${statesText}`
         ws.send(commandText)
