@@ -2,6 +2,10 @@
 フォーマットは[Keep a Changelog][]に、バージョンは[Semantic Versioning][]に準拠しています。
 
 ## [Unreleased]
+### 追加
+- WebSocketモードへの対応
+  - `HUBOT_TRAQ_MODE`が追加されました
+
 ### 変更
 - `node-traq`を3.5.0-2から3.8.2-2にアップデート
 

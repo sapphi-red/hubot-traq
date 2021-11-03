@@ -1,12 +1,16 @@
 const { Adapter } = require("hubot/es2015")
+const ReconnectingWebSocket = require('reconnecting-websocket')
 const Request = require("./request")
 const Handler = require("./handler")
 
+const TRAQ_BOT_WS_URL = 'wss://q.trap.jp/api/v3/bots/ws'
+
 class TraQAdapter extends Adapter {
-  constructor(robot, { verifyToken, accessToken, path, embed = false }) {
+  constructor(robot, { mode, verifyToken, accessToken, path, embed = false }) {
     super(robot)
     this.robot = robot
 
+    this.mode = mode
     this.path = path
 
     this.request = new Request(accessToken, robot, embed)
@@ -19,21 +23,52 @@ class TraQAdapter extends Adapter {
     this.robot.logger.info("Run")
 
     // イベント受信
-    this.robot.router.post(this.path, (req, res) => {
-      this.robot.logger.debug("Recieved Request")
+    if (this.mode === 'HTTP') {
+      this.robot.router.post(this.path, (req, res) => {
+        this.robot.logger.debug("Recieved Request")
 
-      try {
-        const event = this.handler.parse(req)
-        if (event) {
-          this.robot.receive(event.data)
+        try {
+          const event = this.handler.parseHTTPRequest(req)
+          if (event) {
+            this.robot.receive(event.data)
+          }
+
+          res.status(204).end()
+        } catch (e) {
+          this.robot.logger.debug(`Error with request data: ${e}`)
+          res.status(403).end()
         }
+      })
 
-        res.status(204).end()
-      } catch (e) {
-        this.robot.logger.debug(`Error with request data: ${e}`)
-        res.status(403).end()
-      }
-    })
+      this.robot.on('send-rtcstate', () => {
+        this.robot.logger.debug('Cannot use rtcstate command with HTTP mode.')
+      })
+
+    } else if (this.mode === 'WEBSOCKET') {
+      const ws = new ReconnectingWebSocket(TRAQ_BOT_WS_URL)
+      ws.addEventListener('message', eve => {
+        try {
+          const data = JSON.parse(eve.data)
+          if (data.type === 'ERROR') {
+            console.error(`Error from traQ server: ${data.body}`)
+            return
+          }
+
+          const event = this.handler.parse(data.type, data.body)
+          if (event) {
+            this.robot.receive(event.data)
+          }
+        } catch (e) {
+          this.robot.logger.debug(`Error with request data: ${e}`)
+        }
+      })
+
+      this.robot.on('send-rtcstate', eve => {
+        const statesText = Object.entries(eve.states).map(([sessionId, state]) => `${state}:${sessionId}`).join(':')
+        const commandText = `rtcstate:${eve.channelId}:${statesText}`
+        ws.send(commandText)
+      })
+    }
 
     this.emit("connected")
   }

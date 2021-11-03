@@ -37,11 +37,13 @@ git commit -m "Init"
 #### 初期設定
 下記の環境変数をそれぞれ設定します
 - `HUBOT_TRAQ_NAME` - traQで動かすHubotのtraQ ID (例: `@BOT_TEST`なら`BOT_TEST`)
-- `HUBOT_TRAQ_VERIFY_TOKEN` - traQで動かすHubotのVerification Code
+- `HUBOT_TRAQ_MODE` - BOTのモード (`HTTP`または`WebSocket`、省略時は`HTTP`)
 - `HUBOT_TRAQ_ACCESS_TOKEN` - traQで動かすHubotのAccess Token
-- `HUBOT_TRAQ_PATH` - Botサーバーエンドポイントのパス(直下で受け取るなら`""`、`/webhook/`で受け取るなら`"/webhook/"`)
 - `HUBOT_TRAQ_EMBED` - メンション・チャンネルリンクの自動埋め込みの有無(`TRUE`にすると有効、省略時は無効)
 - `PORT`または`EXPRESS_PORT` - [HTTPモードでのポート](https://github.com/hubotio/hubot/blob/master/docs/scripting.md#http-listener) (省略時は`8080`)
+- 以下はHTTPモードのときのみ必要
+  - `HUBOT_TRAQ_VERIFY_TOKEN` - traQで動かすHubotのVerification Code
+  - `HUBOT_TRAQ_PATH` - Botサーバーエンドポイントのパス(直下で受け取るなら`""`、`/webhook/`で受け取るなら`"/webhook/"`)
 
 Verification CodeなどはそれぞれtraQのBot Consoleから確認できます
 

@@ -21,7 +21,7 @@ class TraQEventHandler {
     this.request = request
   }
 
-  parse(req) {
+  parseHTTPRequest(req) {
     const token = req.get(TOKEN_HEADER)
     if (!token || token !== this.token) {
       throw new Error("受け取ったトークンが不正です")
@@ -36,31 +36,35 @@ class TraQEventHandler {
       throw new Error("不正なJSONです")
     }
 
+    return this.parse(eventName, req.body)
+  }
+
+  parse(eventName, jsonBody) {
     switch (eventName) {
     case "PING":
       return null
     case "JOINED":
-      return this.joined(req.body)
+      return this.joined(jsonBody)
     case "LEFT":
-      return this.left(req.body)
+      return this.left(jsonBody)
     case "MESSAGE_CREATED":
-      return this.messageCreated(req.body)
+      return this.messageCreated(jsonBody)
     case "DIRECT_MESSAGE_CREATED":
-      return this.directMessageCreated(req.body)
+      return this.directMessageCreated(jsonBody)
     case "CHANNEL_CREATED":
-      return this.channelCreated(req.body)
+      return this.channelCreated(jsonBody)
     case "CHANNEL_TOPIC_CHANGED":
-      return this.channelTopicChanged(req.body)
+      return this.channelTopicChanged(jsonBody)
     case "USER_CREATED":
-      return this.userCreated(req.body)
+      return this.userCreated(jsonBody)
     case "STAMP_CREATED":
-      return this.stampCreated(req.body)
+      return this.stampCreated(jsonBody)
     case "TAG_ADDED":
-      return this.tagAdded(req.body)
+      return this.tagAdded(jsonBody)
     case "TAG_REMOVED":
-      return this.tagRemoved(req.body)
+      return this.tagRemoved(jsonBody)
     case "BOT_MESSAGE_STAMPS_UPDATED":
-      return this.botMessageStampsUpdated(req.body)
+      return this.botMessageStampsUpdated(jsonBody)
     default:
       return null
     }
