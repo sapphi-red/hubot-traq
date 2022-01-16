@@ -9,7 +9,7 @@
   "dependencies": {
     "@traptitech/traq": "^3.8.2-2",
     "reconnecting-websocket": "^4.4.0",
-    "ws": "^8.2.3"
+    "ws": "^8.4.2"
   },
   "peerDependencies": {
     "hubot": ">=3.0"
