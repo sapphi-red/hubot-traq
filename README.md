@@ -1,5 +1,5 @@
 # hubot-traq
-[![npm version](https://badge.fury.io/js/hubot-traq.svg)](https://badge.fury.io/js/hubot-traq) ![automatic deploy](https://github.com/sapphi-red/hubot-traq/workflows/automatic%20deploy/badge.svg) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)  
+[![npm version](https://badge.fury.io/js/hubot-traq.svg)](https://badge.fury.io/js/hubot-traq) ![automatic release](https://github.com/sapphi-red/hubot-traq/workflows/automatic%20release/badge.svg) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)  
 
 [traQ][]用[Hubot][]アダプター
 
