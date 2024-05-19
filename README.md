@@ -11,21 +11,20 @@
 前提として[Node.js][]が必要です
 ```bash
 # 利用ツールのインストール
-npm install -g hubot coffee-script yo generator-hubot
+npm install -g yo generator-hubot
 # botを管理するディレクトリの作成
-mkdir -p /path/to/hubot
-cd /path/to/hubot
+mkdir -p /path/to/myhubot
+cd /path/to/myhubot
 # テンプレートの作成
 yo hubot
 ```
 
-ここまでしたら、画面にしたがって入力していき、**Bot adapter**と表示されたら`traq`と入力します  
+ここまでしたら、画面にしたがって入力していき、**Bot adapter**と表示されたら`hubot-traq`と入力します  
 (もしくは`yo hubot`のあとに[すべてコマンド引数で指定することもできます][cmd-docs])
 
 既定で入っているscriptsが存在するので一度除きます(このままだとredisがないだの怒られるため)  
-`./external-scripts.json`を開いて`[]`にします  
-`package.json`の`dependencies`の`hubot`と`hubot-traq`以外を取り除いて`npm install`をするといいかもしれません  
-さらに`./hubot-scripts.json`を消すと非推奨というエラーが出なくなります
+具体的には`./external-scripts.json`を開いて`[]`にします  
+追加で`package.json`の`dependencies`の`hubot`と`hubot-traq`以外を取り除いて`npm install`をするといいでしょう  
 
 ```bash
 # gitレポジトリの作成
@@ -48,27 +47,20 @@ git commit -m "Init"
 Verification CodeなどはそれぞれtraQのBot Consoleから確認できます
 
 #### 実行
-```
-./bin/hubot -a traq -n "$HUBOT_TRAQ_NAME"
+`package.json`の`scripts`の`start`を以下のように変更します
+
+```diff
+-    "start": "hubot -a hubot-traq",
++    "start": "hubot -a hubot-traq -n \"$HUBOT_TRAQ_NAME\" \"$@\"",
 ```
 
-#### showcase.yaml
-```yml
-type: runtime
-startup: |
-  npm install -g coffee-script
-  npm ci
-entrypoint: exec node_modules/.bin/hubot -a traq -n "$HUBOT_TRAQ_NAME" "$@"
-http_proxy: 8080
-```
-このようにするとshowcaseで実行できます
+#### showcaseへのデプロイ
+以下の設定で動作します
 
-#### `javascript` `coffeescript` `typescript`
-`./scripts/example.coffee`が存在していますが、拡張子が`.coffee`ではなく`.js`のファイルを`./scripts`に置くことでcoffeescriptではなくJavaScriptで書くことも可能です  
-ただし、この場合でも`npm install -g coffee-script`は必要です  
-
-また、Typescriptで書くことも可能です。  
-ただし、あまり型の恩恵を受けれないと思います…。  
+- Deploy Type: `Runtime`
+- Build Type: `Buildpack`
+  - Context: `.`
+  - Use Database: BotでDBを使うか次第
 
 ---
 
