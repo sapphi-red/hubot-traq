@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@traptitech/traq": "^3.15.3-0",
+    "@traptitech/traq": "^3.18.0-1",
     "reconnecting-websocket": "^4.4.0",
     "ws": "^8.17.0"
   },
