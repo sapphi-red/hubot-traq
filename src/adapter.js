@@ -1,10 +1,10 @@
-const { Adapter } = require("hubot/es2015")
-const ReconnectingWebSocket = require('reconnecting-websocket')
-const { createWebSocketWithHeader } = require('./WebSocketWithHeader')
-const Request = require("./request")
-const Handler = require("./handler")
+import { Adapter } from "hubot"
+import ReconnectingWebSocket from 'reconnecting-websocket'
+import { createWebSocketWithHeader } from './WebSocketWithHeader'
+import Request from "./request.js"
+import Handler from "./handler.js"
 
-class TraQAdapter extends Adapter {
+export default class TraQAdapter extends Adapter {
   constructor(robot, { mode, verifyToken, accessToken, path, embed = false, domain }) {
     super(robot)
     this.robot = robot
@@ -105,5 +105,3 @@ class TraQAdapter extends Adapter {
     this.robot.logger.debug("Topic")
   }
 }
-
-module.exports = TraQAdapter

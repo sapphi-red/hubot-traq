@@ -1,7 +1,7 @@
-const { Message } = require("hubot/es2015")
-const { createNullUser } = require("../nullUser")
+import { Message } from "hubot"
+import { createNullUser } from "../nullUser.js"
 
-class BotMessageStampsUpdated extends Message {
+export default class BotMessageStampsUpdated extends Message {
   constructor({ eventTime, messageId, stamps }, done) {
     const user = createNullUser()
     super(user, done)
@@ -12,5 +12,3 @@ class BotMessageStampsUpdated extends Message {
     this.stamps = stamps
   }
 }
-
-module.exports = BotMessageStampsUpdated

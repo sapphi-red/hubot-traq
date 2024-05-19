@@ -1,6 +1,6 @@
-const { Message } = require("hubot/es2015")
+import { Message } from "hubot"
 
-class ChannelTopicChanged extends Message {
+export default class ChannelTopicChanged extends Message {
   constructor({ eventTime, channel, topic, updater }, done) {
     const u = {
       ...updater,
@@ -18,5 +18,3 @@ class ChannelTopicChanged extends Message {
     this.updater = updater
   }
 }
-
-module.exports = ChannelTopicChanged

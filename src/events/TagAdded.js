@@ -1,7 +1,7 @@
-const { Message } = require("hubot/es2015")
-const { createNullUser } = require("../nullUser")
+import { Message } from "hubot"
+import { createNullUser } from "../nullUser.js"
 
-class TagAdded extends Message {
+export default class TagAdded extends Message {
   constructor({ eventTime, tagId, tag }, done) {
     const user = createNullUser()
     super(user, done)
@@ -12,5 +12,3 @@ class TagAdded extends Message {
     this.tag = tag
   }
 }
-
-module.exports = TagAdded

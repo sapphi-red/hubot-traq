@@ -1,10 +1,10 @@
-const { Apis } = require("@traptitech/traq")
+import { Apis } from "@traptitech/traq"
 
 const createArgError = (path, obj) => {
   return new Error(`無効な引数が渡されました: ${path}: ${JSON.stringify(obj)}`)
 }
 
-class Request {
+export default class Request {
   constructor(token, robot, domain, embed) {
     this.token = token
     this.robot = robot
@@ -165,5 +165,3 @@ class Request {
   */
   // emote(envelope, strings...) {}
 }
-
-module.exports = Request

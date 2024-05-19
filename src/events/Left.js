@@ -1,7 +1,7 @@
-const { Message } = require("hubot/es2015")
-const { createNullUser } = require("../nullUser")
+import { Message } from "hubot"
+import { createNullUser } from "../nullUser.js"
 
-class Left extends Message {
+export default class Left extends Message {
   constructor({ eventTime, channel }, done) {
     const user = createNullUser()
     user.room = {
@@ -16,5 +16,3 @@ class Left extends Message {
     this.channel = channel
   }
 }
-
-module.exports = Left

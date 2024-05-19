@@ -1,4 +1,4 @@
-const {
+import {
   Joined,
   Left,
   MessageCreated,
@@ -10,12 +10,12 @@ const {
   TagAdded,
   TagRemoved,
   BotMessageStampsUpdated
-} = require("./events/events")
+} from "./events/events.js"
 
 const TOKEN_HEADER = "X-TRAQ-BOT-TOKEN"
 const EVENT_HEADER = "X-TRAQ-BOT-EVENT"
 
-class TraQEventHandler {
+export default class TraQEventHandler {
   constructor(token, request) {
     this.token = token
     this.request = request
@@ -141,5 +141,3 @@ class TraQEventHandler {
     }
   }
 }
-
-module.exports = TraQEventHandler

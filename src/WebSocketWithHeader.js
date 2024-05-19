@@ -1,6 +1,6 @@
-const WebSocket = require('ws')
+import WebSocket from 'ws'
 
-exports.createWebSocketWithHeader = headers => {
+export const createWebSocketWithHeader = headers => {
   class WebSocketWithAuth extends WebSocket {
     constructor(url, protocols) {
       super(url, protocols, { headers })

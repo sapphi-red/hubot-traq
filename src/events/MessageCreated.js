@@ -1,6 +1,6 @@
-const { TextMessage } = require("hubot/es2015")
+import { TextMessage } from "hubot"
 
-class MessageCreated extends TextMessage {
+export default class MessageCreated extends TextMessage {
   constructor({ eventTime, message }) {
     const u = {
       ...message.user,
@@ -19,5 +19,3 @@ class MessageCreated extends TextMessage {
     this.updatedAt = message.updatedAt
   }
 }
-
-module.exports = MessageCreated

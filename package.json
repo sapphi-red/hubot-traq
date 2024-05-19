@@ -1,8 +1,9 @@
 {
   "name": "hubot-traq",
+  "type": "module",
   "version": "1.8.3",
   "description": "Hubot adapter for traQ.",
-  "main": "./traq",
+  "main": "./traq.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +13,7 @@
     "ws": "^8.17.0"
   },
   "peerDependencies": {
-    "hubot": ">=3.0"
+    "hubot": ">=11.0"
   },
   "repository": {
     "type": "git",

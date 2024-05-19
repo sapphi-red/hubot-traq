@@ -1,4 +1,4 @@
-const TraQAdapter = require("./src/adapter.js")
+import TraQAdapter from "./src/adapter.js"
 
 const NAME_ENV_NAME = "HUBOT_TRAQ_NAME"
 const MODE_ENV_NAME = "HUBOT_TRAQ_MODE"
@@ -62,10 +62,12 @@ const getEnvs = () => {
   return { mode, accessToken, embed, verifyToken, path, domain }
 }
 
-exports.use = robot => {
-  try {
-    return new TraQAdapter(robot, getEnvs())
-  } catch (e) {
-    console.error(e)
+export default {
+  use(robot) {
+    try {
+      return new TraQAdapter(robot, getEnvs())
+    } catch (e) {
+      console.error(e)
+    }
   }
 }

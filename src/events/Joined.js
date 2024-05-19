@@ -1,7 +1,7 @@
-const { Message } = require("hubot/es2015")
-const { createNullUser } = require("../nullUser")
+import { Message } from "hubot"
+import { createNullUser } from "../nullUser.js"
 
-class Joined extends Message {
+export default class Joined extends Message {
   constructor({ eventTime, channel }, done) {
     const user = createNullUser()
     user.room = {
@@ -16,5 +16,3 @@ class Joined extends Message {
     this.channel = channel
   }
 }
-
-module.exports = Joined
