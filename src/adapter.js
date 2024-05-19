@@ -1,6 +1,6 @@
 import { Adapter } from "hubot"
-import ReconnectingWebSocket from 'reconnecting-websocket'
-import { createWebSocketWithHeader } from './WebSocketWithHeader'
+import ReconnectingWebSocket from "reconnecting-websocket"
+import { createWebSocketWithHeader } from "./WebSocketWithHeader.js"
 import Request from "./request.js"
 import Handler from "./handler.js"
 
