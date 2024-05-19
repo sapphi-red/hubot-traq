@@ -1,7 +1,7 @@
 {
   "name": "hubot-traq",
   "type": "module",
-  "version": "1.8.3",
+  "version": "2.0.0-beta.0",
   "description": "Hubot adapter for traQ.",
   "main": "./traq.js",
   "scripts": {
