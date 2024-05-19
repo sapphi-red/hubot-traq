@@ -3,6 +3,21 @@
 
 ## [Unreleased]
 
+## [2.0.0][] - 2024-05-19
+### 追加
+- `hubot`のv11に対応
+### 変更
+- `node-traq`を3.15.3-0から3.18.0-1にアップデート
+- **README**: hubotのv11に対応した記述に書き換え
+
+## [1.8.3][] - 2024-05-19
+### 変更
+- *Build**: Provenance attestationを生成するように
+
+## [1.8.2][] - 2024-05-19
+### 変更
+- `node-traq`を3.9.0-1から3.15.3-0にアップデート
+
 ## [1.8.1][] - 2022-01-16
 ### 変更
 - `node-traq`を3.8.2-2から3.9.0-1にアップデート
@@ -175,7 +190,10 @@
 ### 追加
 - 初リリース
 
-[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v1.8.1...HEAD
+[Unreleased]: https://github.com/sapphi-red/hubot-traq/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.8.3...v2.0.0
+[1.8.3]: https://github.com/sapphi-red/hubot-traq/compare/v1.8.2...v1.8.3
+[1.8.2]: https://github.com/sapphi-red/hubot-traq/compare/v1.8.1...v1.8.2
 [1.8.1]: https://github.com/sapphi-red/hubot-traq/compare/v1.8.0...v1.8.1
 [1.8.0]: https://github.com/sapphi-red/hubot-traq/compare/v1.7.2...v1.8.0
 [1.7.2]: https://github.com/sapphi-red/hubot-traq/compare/v1.7.1...v1.7.2
